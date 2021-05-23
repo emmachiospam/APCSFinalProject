@@ -1,5 +1,6 @@
 # APCSFinalProject
 Group Name: Vegtris
+
 Group Members: Emma Chio, Angela Cai
 
 Brief Project Descripition:
