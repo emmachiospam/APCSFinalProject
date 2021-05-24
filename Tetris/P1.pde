@@ -1,4 +1,4 @@
-public class P1 {
+class P1 {
 
 
 }

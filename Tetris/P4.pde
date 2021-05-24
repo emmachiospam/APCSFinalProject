@@ -1,3 +1,3 @@
-public class P4{
+class P4{
 
 }
