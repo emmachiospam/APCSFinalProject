@@ -8,3 +8,5 @@ Tetris is a game that involves different blocks made up of four individuals tile
 
 Google Docs Link:
 https://docs.google.com/document/d/1lMI12PImqNcg-z6ZqDGoK4aqGeMcMWb08jGhdtmxXLs/edit?usp=sharing
+
+Angela(5-25): added a seventh game piece and started working on pieces by adding constructor + display.
