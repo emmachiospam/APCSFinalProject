@@ -69,6 +69,9 @@ class P1 {
   }
 
   void display() {
+    strokeWeight(3);
+    stroke(255);
+    fill(162, 101, 201);
     for (int i = 0; i < 4; i++) {
       rect(xCor[i], yCor[i], 30, 30);
     }

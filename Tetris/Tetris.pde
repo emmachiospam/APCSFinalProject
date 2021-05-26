@@ -1,5 +1,8 @@
+int nextTime;
 void setup() {
   size(900,800);
+  int nextTime = getTime() + 1000;
+  //calculate the current time + 1 second = nexTime
 }
 
 void draw() {
@@ -7,5 +10,14 @@ void draw() {
   Grid board = new Grid();
   P1 piece = new P1();
   board.display();
-  piece.display();
+  //if currentTime >= nextTime =
+  if(getTime() >= nextTime) {
+    piece.move();
+    //nextTime + 1 second;
+    piece.display();
+  }
+}
+
+int getTime() {
+  return millis();
 }
