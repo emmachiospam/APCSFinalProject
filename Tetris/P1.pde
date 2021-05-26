@@ -17,9 +17,9 @@ class P1 {
   
   void move() {
     //if (dir.equals("RIGHT")) {
-      for (int i = 0; i < 4; i ++) {
-        cord[i][0]++;
-      }
+      //for (int i = 0; i < 4; i ++) {
+      //  cord[i][0]++;
+      //}
     //}
   }
   
