@@ -1,3 +1,9 @@
-class P4{
+class P4 {
 
+
+  public P4() {
+  }
+
+  void display() {
+  }
 }
