@@ -3,7 +3,7 @@ class Grid {
   int side;
   
   Grid() {
-    int[][] newBoard = new int[20][10];
+    int[][] newBoard = new int[23][10];
     board = newBoard;
   }
   
