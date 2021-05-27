@@ -4,15 +4,15 @@ class P1 {
   int[][] cord; 
 
   public P1() {
-    cord = new int[][]{{0,1}, {1,1}, {2,1}, {1,0}};
-   
+    //cord = new int[][]{{0,1}, {1,1}, {2,1}, {1,0}};
+   cord = new int[][]{{3,1}, {4,1}, {5,1}, {4,0}};
   }
 
   void display() {
     for (int i = 0; i < 4; i++) {
      noStroke();
      fill(162,101,201);
-     rect(cord[i][0]*30+390, cord[i][1]*30+10, 30, 30);
+     rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
    }
   }
 
@@ -22,7 +22,32 @@ class P1 {
         cord[i][0]++;
       }
     }
+    if (dir.equals("LEFT")) {
+      for (int i = 0; i < 4; i ++) {
+        cord[i][0]--;
+      }
+    }
+    if (dir.equals("DOWN")) {
+      for (int i = 0; i < 4; i ++) {
+        cord[i][1]++;
+      }
+    }  
   }
   
   
-}
+  void String(){
+        for (int i = 0; i < cord.length; i++)
+        {
+            for (int j = 0; (cord[i] != null && j < cord[i].length); j++) {
+                print(cord[i][j] + " ");
+            }
+ 
+            println();
+        }
+    }
+    
+  }
+  
+  
+  
+  
