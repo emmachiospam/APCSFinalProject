@@ -13,15 +13,23 @@ void draw() {
   piece.display();
 }
 void keyPressed() {
-  println();
-  piece.String();
+
   if (keyCode == RIGHT) {
     piece.move("RIGHT");
+      piece.String();
+  print(piece.isBounded());
+    println();
   }
   if (keyCode == LEFT) {
-    piece.move("LEFT");
+    piece.move("LEFT");  
+    piece.String();
+  print(piece.isBounded());
+    println();
   }
   if (keyCode == DOWN) {
     piece.move("DOWN");
+      piece.String();
+  print(piece.isBounded());
+    println();
   }
 }

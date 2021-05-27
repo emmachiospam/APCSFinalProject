@@ -2,6 +2,7 @@ class P1 {
 
   int dx, dy;
   int[][] cord; 
+  boolean c1, c2;
 
   public P1() {
     //cord = new int[][]{{0,1}, {1,1}, {2,1}, {1,0}};
@@ -14,6 +15,8 @@ class P1 {
      fill(162,101,201);
      rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
    }
+   
+    
   }
 
   void move(String dir) {
@@ -32,6 +35,7 @@ class P1 {
         cord[i][1]++;
       }
     }  
+
   }
   
   
@@ -41,12 +45,24 @@ class P1 {
             for (int j = 0; (cord[i] != null && j < cord[i].length); j++) {
                 print(cord[i][j] + " ");
             }
- 
             println();
         }
     }
     
+    boolean isBounded() {
+      c1 = true;
+      c2 = true;
+      for (int i = 0; i < 4; i++) {
+         if (!(cord[i][0] <= 9 && cord[i][0] >= 0)) {
+           c1 = false;
+         }
+         if (!(cord[i][1] <= 22)) c2 = false;
+      }
+      return c1 && c2;
   }
+    
+  }
+  
   
   
   
