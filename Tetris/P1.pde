@@ -22,18 +22,24 @@ class P1 {
   void move(String dir) {
     if (checkBounded()) {
     if (dir.equals("RIGHT")) {
-      for (int i = 0; i < 4; i ++) {
-        cord[i][0]++;
+      if(!isBounded().equals("rnp")) {
+       for (int i = 0; i < 4; i ++) {
+         cord[i][0]++;
+       }
       }
     }
     if (dir.equals("LEFT")) {
-      for (int i = 0; i < 4; i ++) {
-        cord[i][0]--;
+      if(!isBounded().equals("lnp")) { 
+        for (int i = 0; i < 4; i ++) {
+          cord[i][0]--;
+        }
       }
     }
     if (dir.equals("DOWN")) {
-      for (int i = 0; i < 4; i ++) {
-        cord[i][1]++;
+      if(!isBounded().equals("dnp")) {
+        for (int i = 0; i < 4; i ++) {
+          cord[i][1]++;
+        }
       }
     }  
     }
@@ -50,6 +56,7 @@ class P1 {
         }
     }
     
+<<<<<<< HEAD
     boolean checkBounded() {
       c1 = true;
       c2 = true;
@@ -58,9 +65,26 @@ class P1 {
            c1 = false;
          }
          if (!(cord[i][1] <= 22)) c2 = false;
+=======
+    String isBounded() {
+      for (int i = 0; i < cord.length; i++) {
+        if(cord[i][0] + 1 > 9){
+          return "rnp";
+        }
+        if (cord[i][0] - 1 < 0) {
+          return "lnp";
+        }
+         //if (!(cord[i][0] <= 9 && cord[i][0] >= 0)) {
+         //  c1 = false;
+         //}
+         //if (!(cord[i][1] <= 22)) c2 = false;
+        if(cord[i][1] + 1 > 22) {
+          return "dnp";
+        }
+>>>>>>> e4ae708d2db82fde4d236e029ff4a048c9344a73
       }
-      return c1 && c2;
-  }
+      return "ap";
+    }
     
   }
   
