@@ -16,3 +16,5 @@ Angela(5-25): added a seventh game piece and started working on pieces by adding
 Angela (5-26): switched up the approach of how we're storing the piece coordinates. Instead of coordinates of the GRAPH, we scaled it as the coordinates of the GRID. Top left corner of grid is 0,0 and right is x++ and down is y++ like normal. keyPresssed direction moves (right, left, down) works, however, having trouble with bounding it. Next goals is to fix that and get the automatic falling motion of the pieces working.
 
 Emma (5-27): made sure the pieces could only move within the grid
+
+Angela (5-27): falling motion of falling works. can control pace of motion
