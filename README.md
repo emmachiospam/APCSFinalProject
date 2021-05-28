@@ -17,4 +17,4 @@ Angela (5-26): switched up the approach of how we're storing the piece coordinat
 
 Emma (5-27): made sure the pieces could only move within the grid
 
-Angela (5-27): falling motion of falling works. can control pace of motion
+Angela (5-27): falling motion of the pieces work. can control pace of motion
