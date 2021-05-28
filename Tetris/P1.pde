@@ -20,6 +20,7 @@ class P1 {
   }
 
   void move(String dir) {
+    if (checkBounded()) {
     if (dir.equals("RIGHT")) {
       for (int i = 0; i < 4; i ++) {
         cord[i][0]++;
@@ -35,7 +36,7 @@ class P1 {
         cord[i][1]++;
       }
     }  
-
+    }
   }
   
   
@@ -49,7 +50,7 @@ class P1 {
         }
     }
     
-    boolean isBounded() {
+    boolean checkBounded() {
       c1 = true;
       c2 = true;
       for (int i = 0; i < 4; i++) {
