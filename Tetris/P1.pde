@@ -11,7 +11,8 @@ class P1 {
 
   void display() {
     for (int i = 0; i < 4; i++) {
-     noStroke();
+     strokeWeight(2);
+     stroke(155, 41, 227);
      fill(162,101,201);
      rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
    }
