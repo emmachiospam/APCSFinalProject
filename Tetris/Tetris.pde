@@ -12,6 +12,7 @@ void draw() {
   board.display();
   piece.fall();
   piece.display();
+  
 }
 void keyPressed() {
 

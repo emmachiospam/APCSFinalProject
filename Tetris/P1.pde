@@ -3,7 +3,7 @@ class P1 {
   int dx, dy;
   int[][] cord; 
   boolean c1, c2;
-  int inc = 50;
+  int inc = 1000;
 
   public P1() {
     //cord = new int[][]{{0,1}, {1,1}, {2,1}, {1,0}};
@@ -22,11 +22,10 @@ class P1 {
   }
   
   void fall() {
-   if (inc % 10 ==0) {
+   if (inc % 60 ==0) {
      move("DOWN");
-     inc++;
    }
-    
+   inc--;
   }
 
   void move(String dir) {
