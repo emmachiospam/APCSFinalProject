@@ -10,6 +10,7 @@ void setup() {
 void draw() {
   background(0);
   board.display();
+  piece.fall();
   piece.display();
 }
 void keyPressed() {

@@ -3,6 +3,7 @@ class P1 {
   int dx, dy;
   int[][] cord; 
   boolean c1, c2;
+  int inc = 50;
 
   public P1() {
     //cord = new int[][]{{0,1}, {1,1}, {2,1}, {1,0}};
@@ -17,6 +18,14 @@ class P1 {
      rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
    }
    
+    
+  }
+  
+  void fall() {
+   if (inc % 10 ==0) {
+     move("DOWN");
+     inc++;
+   }
     
   }
 
