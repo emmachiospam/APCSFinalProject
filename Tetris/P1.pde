@@ -21,21 +21,21 @@ class P1 {
 
   void move(String dir) {
     if (dir.equals("RIGHT")) {
-      if(!isBounded().equals("rnp")) {
+      if(!isBounded()[0].equals("rnp")) {
        for (int i = 0; i < 4; i ++) {
          cord[i][0]++;
        }
       }
     }
     if (dir.equals("LEFT")) {
-      if(!isBounded().equals("lnp")) { 
+      if(!isBounded()[0].equals("lnp")) { 
         for (int i = 0; i < 4; i ++) {
           cord[i][0]--;
         }
       }
     }
     if (dir.equals("DOWN")) {
-      if(!isBounded().equals("dnp")) {
+      if(!isBounded()[1].equals("dnp")) {
         for (int i = 0; i < 4; i ++) {
           cord[i][1]++;
         }
@@ -55,23 +55,26 @@ class P1 {
         }
     }
     
-    String isBounded() {
+    String[] isBounded() {
+      String[] result = new String[2];
+      result[0] = "";
+      result [1] = "";
       for (int i = 0; i < cord.length; i++) {
         if(cord[i][0] + 1 > 9){
-          return "rnp";
+          result[0] = "rnp";
         }
         if (cord[i][0] - 1 < 0) {
-          return "lnp";
+          result[0] = "lnp";
         }
          //if (!(cord[i][0] <= 9 && cord[i][0] >= 0)) {
          //  c1 = false;
          //}
          //if (!(cord[i][1] <= 22)) c2 = false;
         if(cord[i][1] + 1 > 22) {
-          return "dnp";
+          result [1] = "dnp";
         }
       }
-      return "ap";
+      return result;
     }
     
   }
