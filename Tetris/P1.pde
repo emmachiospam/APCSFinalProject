@@ -11,7 +11,6 @@ class P1 {
   public P1() {
     //cord = new int[][]{{0,1}, {1,1}, {2,1}, {1,0}};
    cord = new int[][]{{4,1}, {3,1}, {5,1}, {4,0}};
-   copy = cord.clone();
    
   }
 
@@ -92,6 +91,7 @@ class P1 {
     }
     
     void rotateCW() {
+      copy = cord.clone();
       int[][] copy2 = new int[4][2];
       for (int i = 0; i < 4; i++) {
         copy2[i][0] = copy[0][0]+copy[0][1] - copy[i][1];
