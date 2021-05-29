@@ -7,11 +7,7 @@ class P1 {
   //int[][] r1 = new int[][]{{4,1}, {4,0}, {4,2}, {5,1}};
   int cx, cy;
   int[][] copy;
-<<<<<<< HEAD
-  boolean noTate = true;
-=======
   int index;
->>>>>>> refs/remotes/origin/main
 
   public P1() {
     int rng = (int) (Math.random()*7);
@@ -19,19 +15,17 @@ class P1 {
     if (rng == 0)
     cord = new int[][]{{4, 1}, {3, 1}, {5, 1}, {4, 0}};
     if (rng == 1)
-    cord = new int[][]{{4, 1},{4, 0}, {3, 0}, {5, 1}};
+    cord = new int[][]{{4, 0}, {3, 0}, {4, 1}, {5, 1}};
     if (rng == 2)
-    cord = new int[][]{{4, 1},{5, 0}, {4, 0}, {3, 1}};
+    cord = new int[][]{{5, 0}, {4, 0}, {4, 1}, {3, 1}};
     if (rng == 3)
-    cord = new int[][]{{4, 0}, {3, 0}, {5, 0}, {6, 0}};
-    if (rng == 4) {
+    cord = new int[][]{{3, 0}, {4, 0}, {5, 0}, {6, 0}};
+    if (rng == 4)
     cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {5, 1}};
-    noTate = false;
-    }
     if (rng == 5)
     cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {4, 2}};
     if (rng == 6)
-    cord = new int[][]{{5, 0}, {4, 0}, {5, 1}, {5, 2}};
+    cord = new int[][]{{4, 0}, {5, 0}, {5, 1}, {5, 2}};
     print(rng);
   }
 
@@ -51,8 +45,8 @@ class P1 {
         fill(123, 255, 31);
       }
       if (index == 3){
-        stroke(41, 183, 224);
-        fill(101, 201, 198);
+        stroke(12, 203, 202);
+        fill(0, 255, 255);
       }
       if (index == 4) {
         stroke(224, 224, 27);
@@ -71,7 +65,7 @@ class P1 {
   }
 
   void fall() {
-    if (inc % 50 ==0) {
+    if (inc % 60 ==0) {
       move("DOWN");
     }
     inc--;
@@ -134,7 +128,6 @@ class P1 {
   }
 
   void rotateCCW() {
-    if (noTate) {
     copy = cord.clone();
     int[][] copy2 = new int[4][2];
     for (int i = 0; i < 4; i++) {
@@ -145,9 +138,6 @@ class P1 {
     }
     cord = copy2;
   }
-<<<<<<< HEAD
-  }
-=======
   
   int[][] test() {
     copy = cord.clone();
@@ -194,5 +184,4 @@ class P1 {
     }
   }
   
->>>>>>> refs/remotes/origin/main
 }
