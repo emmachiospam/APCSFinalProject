@@ -100,7 +100,7 @@ class P1 {
     return result;
   }
 
-  void rotateCW() {
+  void rotateCCW() {
     copy = cord.clone();
     int[][] copy2 = new int[4][2];
     for (int i = 0; i < 4; i++) {

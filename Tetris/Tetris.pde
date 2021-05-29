@@ -35,7 +35,7 @@ void keyPressed() {
     println(); 
   }
   if (keyCode == UP) {
-    piece.rotateCW();
+    piece.rotateCCW();
     piece.String();
   }
   if (keyCode == ' ') {
