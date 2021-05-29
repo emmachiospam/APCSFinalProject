@@ -19,4 +19,4 @@ Emma (5-27): made sure the pieces could only move within the grid
 
 Angela (5-27): falling motion of the pieces work. can control pace of motion
 
-Emma (5-29): worked on coloring and making sure that the pieces rotate within the grid
+Emma (5-29): worked on coloring each block and making sure that the pieces rotate within the grid
