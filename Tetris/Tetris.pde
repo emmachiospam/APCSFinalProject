@@ -35,7 +35,7 @@ void keyPressed() {
     println(); 
   }
   if (keyCode == UP) {
-    //piece.turn();
+    piece.turn();
     piece.onBorder();
     piece.String();
   }

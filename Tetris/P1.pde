@@ -56,13 +56,8 @@ class P1 {
       }
       //blue i-block
       if (index == 3){
-<<<<<<< HEAD
-        stroke(12, 203, 202);
-        fill(0, 255, 255);
-=======
         stroke(41, 183, 224);
         fill(101, 201, 198, 150);
->>>>>>> 555edc59fe0bd770b45b22a92dc69b613832b388
       }
       //yellow o-block
       if (index == 4) {
@@ -194,11 +189,9 @@ class P1 {
   }
   
   void turn() {
-    if (!onBorder()[0].equals("rnp") || !onBorder()[0].equals("lnp")) {
-      if (!onBorder()[1].equals("dnp") || !onBorder()[1].equals("unp")) {
-        for (int i = 0; i < 4; i ++) {
+    if (!onBorder()[0].equals("rnp") && !onBorder()[0].equals("lnp")) {
+      if (!onBorder()[1].equals("dnp") && !onBorder()[1].equals("unp")) {
           rotateCCW();
-        }
       }
     }
   }
