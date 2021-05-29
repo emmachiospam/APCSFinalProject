@@ -7,9 +7,11 @@ class P1 {
   //int[][] r1 = new int[][]{{4,1}, {4,0}, {4,2}, {5,1}};
   int cx, cy;
   int[][] copy;
+  int index;
 
   public P1() {
     int rng = (int) (Math.random()*7);
+    index = rng;
     if (rng == 0)
     cord = new int[][]{{4, 1}, {3, 1}, {5, 1}, {4, 0}};
     if (rng == 1)
@@ -30,8 +32,34 @@ class P1 {
   void display() {
     for (int i = 0; i < 4; i++) {
       strokeWeight(2);
-      stroke(155, 41, 227);
-      fill(162, 101, 201);
+      if (index == 0) {
+        stroke(155, 41, 227);
+        fill(162, 101, 201);
+      }
+      if (index == 1) {
+        stroke(178, 0, 27);
+        fill(232, 2, 37);
+      }
+      if (index == 2) {
+        stroke(155, 41, 227);
+        fill(162, 101, 201);
+      }
+      if (index == 3){
+        stroke(155, 41, 227);
+        fill(162, 101, 201);
+      }
+      if (index == 4) {
+        stroke(155, 41, 227);
+        fill(162, 101, 201);
+      }
+      if (index == 5) {
+        stroke(155, 41, 227);
+        fill(162, 101, 201);
+      }
+      if (index == 6) {
+        stroke(155, 41, 227);
+        fill(162, 101, 201);
+      }
       rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
     }
   }
@@ -89,12 +117,11 @@ class P1 {
       if (cord[i][0] - 1 < 0) {
         result[0] = "lnp";
       }
-      //if (!(cord[i][0] <= 9 && cord[i][0] >= 0)) {
-      //  c1 = false;
-      //}
-      //if (!(cord[i][1] <= 22)) c2 = false;
       if (cord[i][1] + 1 > 22) {
         result [1] = "dnp";
+      }
+      if (cord[i][1] - 1 < 0) {
+        result [1] = "unp";
       }
     }
     return result;
@@ -111,4 +138,50 @@ class P1 {
     }
     cord = copy2;
   }
+  
+  int[][] test() {
+    copy = cord.clone();
+    int[][] copy2 = new int[4][2];
+    for (int i = 0; i < 4; i++) {
+      //copy2[i][0] = copy[0][0]+copy[0][1] - copy[i][1];
+      //copy2[i][1] = copy[i][0] +copy[0][1]-copy[0][0];
+      copy2[i][0] = copy[0][0] + copy[i][1]-copy[0][1];
+      copy2[i][1] = -copy[i][0] +copy[0][1]+copy[0][0];
+    }
+    return copy2;
+  }
+  
+  String[] onBorder() {
+    String[] result = new String[2];
+    int[][] test = test();
+    result[0] = "";
+    result [1] = "";
+    for (int i = 0; i < cord.length; i++) {
+      if (test[i][0] + 1 > 9) {
+        result[0] = "rnp";
+      }
+      if (test[i][0] - 1 < 0) {
+        result[0] = "lnp";
+      }
+      if (test[i][1] + 1 > 22) {
+        result [1] = "dnp";
+      }
+      if (test[i][1] - 1 < 0) {
+        result [1] = "unp";
+      }
+    }
+    print(result[0] + " "  + result[1]);
+    return result;
+  }
+  
+  void turn() {
+    if (!onBorder()[0].equals("rnp") || !onBorder()[0].equals("lnp")) {
+      if (!onBorder()[1].equals("dnp") || !onBorder()[1].equals("unp")) {
+        for (int i = 0; i < 4; i ++) {
+          rotateCCW();
+        }
+      }
+    }
+  }
+  
 }
