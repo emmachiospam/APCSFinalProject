@@ -104,8 +104,10 @@ class P1 {
     copy = cord.clone();
     int[][] copy2 = new int[4][2];
     for (int i = 0; i < 4; i++) {
-      copy2[i][0] = copy[0][0]+copy[0][1] - copy[i][1];
-      copy2[i][1] = copy[i][0] +copy[0][1]-copy[0][0];
+      //copy2[i][0] = copy[0][0]+copy[0][1] - copy[i][1];
+      //copy2[i][1] = copy[i][0] +copy[0][1]-copy[0][0];
+      copy2[i][0] = copy[0][0] + copy[i][1]-copy[0][1];
+      copy2[i][1] = -copy[i][0] +copy[0][1]+copy[0][0];
     }
     cord = copy2;
   }
