@@ -45,8 +45,8 @@ class P1 {
         fill(123, 255, 31);
       }
       if (index == 3){
-        stroke(12, 203, 202);
-        fill(0, 255, 255);
+        stroke(41, 183, 224);
+        fill(101, 201, 198);
       }
       if (index == 4) {
         stroke(224, 224, 27);
