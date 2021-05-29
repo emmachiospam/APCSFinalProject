@@ -32,10 +32,13 @@ void keyPressed() {
     piece.move("DOWN");
       piece.String();
   print(piece.isBounded());
-    println();
+    println(); 
   }
   if (keyCode == UP) {
     piece.rotateCW();
     piece.String();
+  }
+  if (keyCode == ' ') {
+    piece = new P1();
   }
 }
