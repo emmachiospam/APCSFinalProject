@@ -10,7 +10,7 @@ void setup() {
 void draw() {
   background(0);
   board.display();
-  piece.fall();
+  //piece.fall();
   piece.display();
   
 }
@@ -33,5 +33,9 @@ void keyPressed() {
       piece.String();
   print(piece.isBounded());
     println();
+  }
+  if (keyCode == UP) {
+    piece.rotateCW();
+    piece.String();
   }
 }

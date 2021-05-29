@@ -4,10 +4,15 @@ class P1 {
   int[][] cord; 
   boolean c1, c2;
   int inc = 1000;
+  //int[][] r1 = new int[][]{{4,1}, {4,0}, {4,2}, {5,1}};
+  int cx, cy;
+  int[][] copy;
 
   public P1() {
     //cord = new int[][]{{0,1}, {1,1}, {2,1}, {1,0}};
-   cord = new int[][]{{3,1}, {4,1}, {5,1}, {4,0}};
+   cord = new int[][]{{4,1}, {3,1}, {5,1}, {4,0}};
+   copy = cord.clone();
+   
   }
 
   void display() {
@@ -84,6 +89,15 @@ class P1 {
         }
       }
       return result;
+    }
+    
+    void rotateCW() {
+      int[][] copy2 = new int[4][2];
+      for (int i = 0; i < 4; i++) {
+        copy2[i][0] = copy[0][0]+copy[0][1] - copy[i][1];
+        copy2[i][1] = copy[i][0] +copy[0][1]-copy[0][0];
+      }
+      cord = copy2;
     }
     
   }
