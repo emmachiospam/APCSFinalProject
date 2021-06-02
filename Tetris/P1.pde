@@ -8,31 +8,40 @@ class P1 {
   int cx, cy;
   int[][] copy;
   int index;
+  boolean canMove = true;
 
   public P1() {
     int rng = (int) (Math.random()*7);
     index = rng;
     //purple t-block
-    if (rng == 0)
+    if (rng == 0) {
     cord = new int[][]{{4, 1}, {3, 1}, {5, 1}, {4, 0}};
+    }
     //red z-block
-    if (rng == 1)
-    cord = new int[][]{{4, 0}, {3, 0}, {4, 1}, {5, 1}};
+    if (rng == 1) {
+    cord = new int[][]{{4, 1},{4, 0}, {3, 0}, {5, 1}};
+    }
     //green s-block
-    if (rng == 2)
-    cord = new int[][]{{5, 0}, {4, 0}, {4, 1}, {3, 1}};
+    if (rng == 2) {
+    cord = new int[][]{ {4, 1},{5, 0}, {4, 0}, {3, 1}};
+    }
     //blue i-block
-    if (rng == 3)
-    cord = new int[][]{{3, 0}, {4, 0}, {5, 0}, {6, 0}};
+    if (rng == 3) {
+    cord = new int[][]{{4, 0}, {3, 0}, {5, 0}, {6, 0}};
+    }
     //yellow o-block
-    if (rng == 4)
+    if (rng == 4) {
+      canMove = false;
     cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {5, 1}};
+    }
     //blue j-block
-    if (rng == 5)
+    if (rng == 5) {
     cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {4, 2}};
+    }
     //orange l-block
-    if (rng == 6)
-    cord = new int[][]{{4, 0}, {5, 0}, {5, 1}, {5, 2}};
+    if (rng == 6) {
+    cord = new int[][]{{5, 0}, {4, 0}, {5, 1}, {5, 2}};
+    }
     print(rng);
   }
 
@@ -171,29 +180,35 @@ class P1 {
     result[0] = "";
     result [1] = "";
     for (int i = 0; i < cord.length; i++) {
-      if (test[i][0] + 1 > 9) {
+      if (test[i][0] > 9) {
+        move("LEFT");
         result[0] = "rnp";
       }
-      if (test[i][0] - 1 < 0) {
+      if (test[i][0] < 0) {
+        move("RIGHT");
         result[0] = "lnp";
       }
-      if (test[i][1] + 1 > 22) {
+      if (test[i][1] > 22) {
         result [1] = "dnp";
       }
-      if (test[i][1] - 1 < 0) {
+      if (test[i][1] < 0) {
         result [1] = "unp";
       }
     }
-    print(result[0] + " "  + result[1]);
+    //print(result[0] + " "  + result[1]);
     return result;
   }
   
   void turn() {
+    if (canMove) {
     if (!onBorder()[0].equals("rnp") && !onBorder()[0].equals("lnp")) {
       if (!onBorder()[1].equals("dnp") && !onBorder()[1].equals("unp")) {
           rotateCCW();
       }
     }
+    }
   }
+  
+
   
 }
