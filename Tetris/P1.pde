@@ -8,10 +8,13 @@ class P1 {
   int cx, cy;
   int[][] copy;
   int index;
+  String[] possibleMovement;
+  boolean touchNeighbor;
   boolean canMove = true;
   boolean atBottom = false;
 
   public P1() {
+    
     int rng = (int) (Math.random()*7);
     index = rng;
     //purple t-block
@@ -43,6 +46,9 @@ class P1 {
     if (rng == 6) {
     cord = new int[][]{{5, 0}, {4, 0}, {5, 1}, {5, 2}};
     }
+    possibleMovement = new String[2];
+    possibleMovement[0] = "";
+    possibleMovement[1] = "";
     print(rng);
   }
 
@@ -96,22 +102,24 @@ class P1 {
   }
 
   void move(String dir) {
+    isBounded();
     if (dir.equals("RIGHT")) {
-      if (!isBounded()[0].equals("rnp")) {
+      //if (!isBounded()[0].equals("rnp")) {
+      if (!possibleMovement[0].equals("rnp")) {
         for (int i = 0; i < 4; i ++) {
           cord[i][0]++;
         }
       }
     }
     if (dir.equals("LEFT")) {
-      if (!isBounded()[0].equals("lnp")) { 
+      if (!possibleMovement[0].equals("lnp")) { 
         for (int i = 0; i < 4; i ++) {
           cord[i][0]--;
         }
       }
     }
     if (dir.equals("DOWN")) {
-      if (!isBounded()[1].equals("dnp")) {
+      if (!possibleMovement[1].equals("dnp")) {
         for (int i = 0; i < 4; i ++) {
           cord[i][1]++;
         }
@@ -134,25 +142,24 @@ class P1 {
     }
   }
 
-  String[] isBounded() {
-    String[] result = new String[2];
-    result[0] = "";
-    result [1] = "";
+  void isBounded() {
+    //String result = sd 
     for (int i = 0; i < cord.length; i++) {
       if (cord[i][0] + 1 > 9) {
-        result[0] = "rnp";
+        //reslt = "rnp"
+        possibleMovement[0] = "rnp";
       }
       if (cord[i][0] - 1 < 0) {
-        result[0] = "lnp";
+        possibleMovement[0] = "lnp";
       }
       if (cord[i][1] + 1 > 22) {
-        result [1] = "dnp";
+        possibleMovement[1] = "dnp";
       }
       if (cord[i][1] - 1 < 0) {
-        result [1] = "unp";
+        possibleMovement[1] = "unp";
       }
     }
-    return result;
+    //return result
   }
 
   void rotateCCW() {
@@ -179,6 +186,7 @@ class P1 {
     return copy2;
   }
   
+  //for future rotation purposes
   String[] onBorder() {
     String[] result = new String[2];
     int[][] test = test();
@@ -214,7 +222,7 @@ class P1 {
     }
   }
   
-   int[][] cord() {
+  int[][] cord() {
     return cord;
   }
   
@@ -222,9 +230,37 @@ class P1 {
     int[][] copy = new int[4][2];
     copy = cord.clone();
     for(int i = 0; i < 4; i++) {
-      copy[i][0]--;
+      copy[i][1]++;
     }
     return copy;
+  }
+  
+  void touchNeighbor(ArrayList<P1> pieces) {
+    P1 current = pieces.get(pieces.size()-1);
+    for (int i = 0; i < pieces.size()-1; i++) {
+      P1 p = pieces.get(i);
+      int [][] cord = p.cord();
+      int [][] futureCord = current.futureCord();
+      for(int j = 0; j < cord.length; j++) {
+        for(int k = 0; k < futureCord.length; k++) {
+           //println(cord.length + ""+ futureCord.length);
+          if(equals(cord[j], futureCord[k])) {
+            possibleMovement[1] = "dnp";
+          }
+        }
+      }
+    }
+  }
+  
+  // a = (6,4) b = (3,4)
+  boolean equals(int[] a, int[] b) {
+    boolean result = true;
+    for(int i = 0; i < a.length; i++) {
+      if (a[i] == b[i]) {
+        result = false;
+      }
+    }
+    return result;
   }
 
   

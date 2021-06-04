@@ -12,14 +12,18 @@ void setup() {
 void draw() {
   background(0);
   board.display();
-  for (P1 p: pieces) {
+  for (P1 p : pieces) {
     p.display();
+    
   }
   newSpawn();
   pieces.get(pieces.size()-1).fall();
+  //piece.touchNeighbor(pieces);
+
 }
 
 void newSpawn() {
+
   if (piece.atBottom) {
     nextPiece = new P1();
     pieces.add(nextPiece);
@@ -28,24 +32,26 @@ void newSpawn() {
   }
 }
 
+
+
 void keyPressed() {
   if (keyCode == RIGHT) {
     pieces.get(pieces.size()-1).move("RIGHT");
-      pieces.get(pieces.size()-1).String();
-  print(pieces.get(pieces.size()-1).isBounded());
+    pieces.get(pieces.size()-1).String();
+    //print(pieces.get(pieces.size()-1).isBounded());
     println();
   }
   if (keyCode == LEFT) {
     pieces.get(pieces.size()-1).move("LEFT");  
     pieces.get(pieces.size()-1).String();
-  print(pieces.get(pieces.size()-1).isBounded());
+    //print(pieces.get(pieces.size()-1).isBounded());
     println();
   }
   if (keyCode == DOWN) {
     pieces.get(pieces.size()-1).move("DOWN");
-      pieces.get(pieces.size()-1).String();
-  print(pieces.get(pieces.size()-1).isBounded());
-    println(); 
+    pieces.get(pieces.size()-1).String();
+    //print(pieces.get(pieces.size()-1).isBounded());
+    println();
   }
   if (keyCode == UP) {
     pieces.get(pieces.size()-1).turn();
@@ -80,7 +86,7 @@ void keyPressed() {
 //    print(piece.isBounded());
 //    println();
 //  }
-  //if (keyCode == ' ') {
-  //  piece = new P1();
-  //}
+//if (keyCode == ' ') {
+//  piece = new P1();
+//}
 //}
