@@ -124,16 +124,6 @@ class P1 {
   }
 
 
-  void String() {
-    for (int i = 0; i < cord.length; i++)
-    {
-      for (int j = 0; (cord[i] != null && j < cord[i].length); j++) {
-        print(cord[i][j] + " ");
-      }
-      println();
-    }
-  }
-
   String[] isBounded() {
     String[] result = new String[2];
     result[0] = "";
@@ -220,11 +210,25 @@ class P1 {
   
   int[][] futureCord() {
     int[][] copy = new int[4][2];
-    copy = cord.clone();
+    for (int i = 0; i < 4; i++) {
+      for (int j = 0; j < 2; j++) {
+        copy[i][j] = cord[i][j];
+      }
+    }
     for(int i = 0; i < 4; i++) {
       copy[i][1]++;
     }
     return copy;
+  }
+  
+    void String() {
+    for (int i = 0; i < cord.length; i++)
+    {
+      for (int j = 0; (cord[i] != null && j < cord[i].length); j++) {
+        print(cord[i][j] + " ");
+      }
+      println();
+    }
   }
 
   

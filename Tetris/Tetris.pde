@@ -17,15 +17,13 @@ void draw() {
     p.display();
   }
   newSpawn();
-  pieces.get(pieces.size()-1).fall();
-  
   
   //piece.touchNeighbor(pieces);
 
 }
 
 void newSpawn() {
-  if (touchNeighbor(pieces)) {
+  if (touchNeighbor()) {
     piece.atBottom = true;
   }
   else {
@@ -35,7 +33,6 @@ void newSpawn() {
     nextPiece = new P1();
     pieces.add(nextPiece);
     piece = nextPiece;
-
   }
 }
 
@@ -65,59 +62,22 @@ piece.isBounded();    println();
     pieces.add(new P1());
   }
 }
-
-//void keyPressed() {
-//  println();
-//  piece.String();
-
-//  if (keyCode == RIGHT) {
-//    piece.move("RIGHT");
-//    piece.String();
-//    print(piece.isBounded());
-//    println();
-//  }
-//  if (keyCode == LEFT) {
-//    piece.move("LEFT");
-//    piece.move("LEFT");  
-//    piece.String();
-//    print(piece.isBounded());
-//    println();
-//  }
-//  if (keyCode == DOWN) {
-//    piece.move("DOWN");
-//    piece.String();
-//    print(piece.isBounded());
-//    println();
-//  }
-//if (keyCode == ' ') {
-//  piece = new P1();
-//}
-//}
-
-boolean touchNeighbor(ArrayList<P1> pieces) {
+boolean touchNeighbor() {
   boolean touch = false;
-    for (int i = 0; i < pieces.size()-1; i++) {
-      P1 p = pieces.get(i);
-      int [][] cord = p.cord();
-      int [][] futureCord = piece.futureCord();
-      for(int j = 0; j < cord.length; j++) {
-        for(int k = 0; k < futureCord.length; k++) {
-           //println(cord.length + ""+ futureCord.length);
-          if(equals(cord[j], futureCord[k])) {
-            touch = true;
-          }
-        }
-      }
-    }
-    return touch;
+  for (int i = 0; i < pieces.size()-1; i++) {
+    int[][] pieceFuture = piece.futureCord();
+    int[][] otherPiece = pieces.get(i).cord();
+    if (equals(pieceFuture, otherPiece)) touch = true;
+  }
+   return touch;
   }
   
-    boolean equals(int[] a, int[] b) {
-    boolean result = false;
-    for(int i = 0; i < a.length; i++) {
-      if (a[i] != b[i]) {
-        result = true;
-      }
+boolean equals(int[][] a, int[][] b) {
+  boolean result = false;
+  for (int[] row1: a) {
+    for (int[] row2: b) {
+      if ((row1[0] == row2[0]) && (row1[1] == row2[1])) result = true;
     }
-    return result;
   }
+  return result;
+}
