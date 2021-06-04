@@ -95,7 +95,7 @@ class P1 {
   }
 
   void fall() {
-    if (inc % 40 ==0) {
+    if (inc % 20 ==0) {
       move("DOWN");
     }
     inc--;
