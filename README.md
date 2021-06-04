@@ -19,6 +19,8 @@ Emma (5-27): made sure the pieces could only move within the grid
 
 Angela (5-27): falling motion of the pieces work. can control pace of motion
 
+Angela (5-28): started transitioning the six smaller classes into a single big one. Also was able to create a rotate method that had a designated rotation point for CCW or CW pieces. For the convenience and design, we chose to stick with CW though we can add an extra CCW option too.
+
 Emma (5-29): worked on coloring each block and making sure that the pieces rotate within the grid
 
 Angela (6-2): successfully bounded next rotations of pieces.
