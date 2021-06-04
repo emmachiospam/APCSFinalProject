@@ -1,91 +1,92 @@
-P1 piece;
 Grid board;
-boolean placed;
 ArrayList<P1> pieces;
+P1 piece, nextPiece;
 void setup() {
   size(900, 800);
   pieces = new ArrayList<P1>();
-  pieces.add(new P1());
-  placed = true;
   piece = new P1();
+  pieces.add(piece);
   board = new Grid();
 }
 
 void draw() {
   background(0);
   board.display();
-  P1 current = pieces.get(pieces.size()-1);
-  current.fall();
-  play();
-  
-}
-void keyPressed() {
+  for (P1 p : pieces) {
+    p.display();
+    
+  }
+  newSpawn();
+  pieces.get(pieces.size()-1).fall();
+  //piece.touchNeighbor(pieces);
 
+}
+
+void newSpawn() {
+
+  if (piece.atBottom) {
+    nextPiece = new P1();
+    pieces.add(nextPiece);
+    piece = nextPiece;
+    nextPiece.atBottom = false;
+  }
+}
+
+
+
+void keyPressed() {
   if (keyCode == RIGHT) {
-    piece.move("RIGHT");
-    piece.String();
-    print(piece.isBounded());
+    pieces.get(pieces.size()-1).move("RIGHT");
+    pieces.get(pieces.size()-1).String();
+    //print(pieces.get(pieces.size()-1).isBounded());
     println();
   }
   if (keyCode == LEFT) {
-    piece.move("LEFT");  
-    piece.String();
-    print(piece.isBounded());
+    pieces.get(pieces.size()-1).move("LEFT");  
+    pieces.get(pieces.size()-1).String();
+    //print(pieces.get(pieces.size()-1).isBounded());
     println();
   }
   if (keyCode == DOWN) {
-    piece.move("DOWN");
-    piece.String();
-    print(piece.isBounded());
-    println(); 
+    pieces.get(pieces.size()-1).move("DOWN");
+    pieces.get(pieces.size()-1).String();
+    //print(pieces.get(pieces.size()-1).isBounded());
+    println();
   }
   if (keyCode == UP) {
-    piece.turn();
-    piece.onBorder();
-    piece.String();
+    pieces.get(pieces.size()-1).turn();
+    pieces.get(pieces.size()-1).onBorder();
+    pieces.get(pieces.size()-1).String();
   }
   if (keyCode == ' ') {
-    piece = new P1();
+    pieces.add(new P1());
   }
 }
 
-boolean equals(int[] a, int[] b) {
-  boolean result = true;
-  for(int i = 0; i < a.length; i++) {
-    for(int j = 0; j < b.length; j++) {
-      if(a[i] == b[j]) {
-        result = false;
-      }
-    }
-  }
-  return result;
-}
+//void keyPressed() {
+//  println();
+//  piece.String();
 
-void play() {
-  //if(placed && pieces.size() != 0) {
-  //}
-  P1 current = pieces.get(pieces.size()-1);
-  if(placed) {
-    current = new P1();
-    pieces.add(current);
-    placed = false;
-  } 
-  else {
-    placed = false;
-    for(int k = 0; k < pieces.size() - 1; k++) {
-      int[][] currentFutureCord = current.futureCord();
-      int[][] cord = pieces.get(k).cord();
-      for(int i = 0; i < 4; i++) {
-        for(int j = 0; j < 4; j++) {
-          if(equals(cord[i], currentFutureCord[j])) {
-            placed = true;
-          }
-        }
-      }
-    }
-  }
-  for(P1 p : pieces) {
-    //p.fall();
-    p.display();
-  }
-}
+//  if (keyCode == RIGHT) {
+//    piece.move("RIGHT");
+//    piece.String();
+//    print(piece.isBounded());
+//    println();
+//  }
+//  if (keyCode == LEFT) {
+//    piece.move("LEFT");
+//    piece.move("LEFT");  
+//    piece.String();
+//    print(piece.isBounded());
+//    println();
+//  }
+//  if (keyCode == DOWN) {
+//    piece.move("DOWN");
+//    piece.String();
+//    print(piece.isBounded());
+//    println();
+//  }
+//if (keyCode == ' ') {
+//  piece = new P1();
+//}
+//}

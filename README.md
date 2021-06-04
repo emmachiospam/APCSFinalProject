@@ -19,4 +19,12 @@ Emma (5-27): made sure the pieces could only move within the grid
 
 Angela (5-27): falling motion of the pieces work. can control pace of motion
 
+Angela (5-28): started transitioning the six smaller classes into a single big one. Also was able to create a rotate method that had a designated rotation point for CCW or CW pieces. For the convenience and design, we chose to stick with CW though we can add an extra CCW option too.
+
 Emma (5-29): worked on coloring each block and making sure that the pieces rotate within the grid
+
+Angela (6-2): successfully bounded next rotations of pieces.
+
+Angela (6-3): while on zoom call with emma, we sucessfully created new spawn when a piece falls on the very bottom of the grid. However, we tried and failed to create a new spawn a piece falls on a neighbor piece. For the demo, we kept it at spawning when piece is at bottom
+
+Emma (6-3): went on call with Angela and worked on spawning a new piece once the current piece landed. Originally there was trouble about only being able to move the first piece that was spawned but managed to move that control to the current piece that last spawned. Transitioned pieces into an arraylist. However, while working have no yet been able to get pieces to stop moving at neighbors.
