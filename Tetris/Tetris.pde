@@ -5,6 +5,7 @@ ArrayList<P1> pieces;
 void setup() {
   size(900, 800);
   pieces = new ArrayList<P1>();
+  pieces.add(new P1());
   placed = true;
   piece = new P1();
   board = new Grid();
@@ -13,6 +14,8 @@ void setup() {
 void draw() {
   background(0);
   board.display();
+  P1 current = pieces.get(pieces.size()-1);
+  current.fall();
   play();
   
 }
@@ -32,7 +35,7 @@ void keyPressed() {
   }
   if (keyCode == DOWN) {
     piece.move("DOWN");
-      piece.String();
+    piece.String();
     print(piece.isBounded());
     println(); 
   }
@@ -59,22 +62,30 @@ boolean equals(int[] a, int[] b) {
 }
 
 void play() {
+  //if(placed && pieces.size() != 0) {
+  //}
+  P1 current = pieces.get(pieces.size()-1);
   if(placed) {
-    P1 newSpawn = new P1();
-    pieces.add(newSpawn);
+    current = new P1();
+    pieces.add(current);
+    placed = false;
   } 
   else {
-    P1 current = pieces.get(pieces.size()-1);
+    placed = false;
     for(int k = 0; k < pieces.size() - 1; k++) {
-      int[][] currentCord = pieces.get(pieces.size() - 1).futureCord();
+      int[][] currentFutureCord = current.futureCord();
       int[][] cord = pieces.get(k).cord();
       for(int i = 0; i < 4; i++) {
         for(int j = 0; j < 4; j++) {
-          placed = equals(cord[i], currentCord[j]);
+          if(equals(cord[i], currentFutureCord[j])) {
+            placed = true;
+          }
         }
       }
     }
-    current.fall();
-    current.display();
+  }
+  for(P1 p : pieces) {
+    //p.fall();
+    p.display();
   }
 }

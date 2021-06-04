@@ -88,7 +88,7 @@ class P1 {
   }
 
   void fall() {
-    if (inc % 60 ==0) {
+    if (inc % 20 ==0) {
       move("DOWN");
     }
     inc--;
@@ -217,7 +217,7 @@ class P1 {
     int[][] copy = new int[4][2];
     copy = cord.clone();
     for(int i = 0; i < 4; i++) {
-      copy[i][0]++;
+      copy[i][0]--;
     }
     return copy;
   }
