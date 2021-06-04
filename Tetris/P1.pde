@@ -9,6 +9,7 @@ class P1 {
   int[][] copy;
   int index;
   boolean canMove = true;
+  boolean atBottom = false;
 
   public P1() {
     int rng = (int) (Math.random()*7);
@@ -88,7 +89,7 @@ class P1 {
   }
 
   void fall() {
-    if (inc % 60 ==0) {
+    if (inc % 40 ==0) {
       move("DOWN");
     }
     inc--;
@@ -115,7 +116,11 @@ class P1 {
           cord[i][1]++;
         }
       }
+      else {
+        atBottom = true;
+      }
     }
+    
   }
 
 
@@ -209,6 +214,18 @@ class P1 {
     }
   }
   
+   int[][] cord() {
+    return cord;
+  }
+  
+  int[][] futureCord() {
+    int[][] copy = new int[4][2];
+    copy = cord.clone();
+    for(int i = 0; i < 4; i++) {
+      copy[i][0]--;
+    }
+    return copy;
+  }
 
   
 }
