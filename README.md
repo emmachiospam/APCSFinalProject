@@ -20,3 +20,7 @@ Emma (5-27): made sure the pieces could only move within the grid
 Angela (5-27): falling motion of the pieces work. can control pace of motion
 
 Emma (5-29): worked on coloring each block and making sure that the pieces rotate within the grid
+
+Angela (6-2): successfully bounded next rotations of pieces.
+
+Angela (6-3): while on zoom call with emma, we sucessfully created new spawn when a piece falls on the very bottom of the grid. However, we tried and failed to create a new spawn a piece falls on a neighbor piece. For the demo, we kept it at spawning when piece is at bottom
