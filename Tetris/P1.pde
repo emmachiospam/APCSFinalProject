@@ -209,6 +209,17 @@ class P1 {
     }
   }
   
-
+  int[][] cord() {
+    return cord;
+  }
+  
+  int[][] futureCord() {
+    int[][] copy = new int[4][2];
+    copy = cord.clone();
+    for(int i = 0; i < 4; i++) {
+      copy[i][0]++;
+    }
+    return copy;
+  }
   
 }
