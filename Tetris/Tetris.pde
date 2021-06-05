@@ -37,21 +37,23 @@ void newSpawn() {
 }
 
 void keyPressed() {
-  if (keyCode == RIGHT) {
+  if (keyCode == RIGHT && !touchNeighborsSides()[1].equals("rnp")) {
     pieces.get(pieces.size()-1).move("RIGHT");
     pieces.get(pieces.size()-1).String();
     piece.isBounded();
     println();
   }
-  if (keyCode == LEFT) {
+  if (keyCode == LEFT && !touchNeighborsSides()[0].equals("lnp")) {
     pieces.get(pieces.size()-1).move("LEFT");  
     pieces.get(pieces.size()-1).String();
-piece.isBounded();    println();
+    piece.isBounded();    
+    println();
   }
   if (keyCode == DOWN) {
     pieces.get(pieces.size()-1).move("DOWN");
     pieces.get(pieces.size()-1).String();
-piece.isBounded();    println();
+    piece.isBounded();    
+    println();
   }
   if (keyCode == UP) {
     pieces.get(pieces.size()-1).turn();
@@ -67,10 +69,44 @@ boolean touchNeighbor() {
   for (int i = 0; i < pieces.size()-1; i++) {
     int[][] pieceFuture = piece.futureCord();
     int[][] otherPiece = pieces.get(i).cord();
-    if (equals(pieceFuture, otherPiece)) touch = true;
+    if (equals(pieceFuture, otherPiece)) {
+      touch = true; 
+    }
   }
    return touch;
+}
+
+String[] touchNeighborsSides() {
+  String[] result = new String[2]; 
+  result[0] = "";
+  result[1] = "";
+  int[][] pieceLeftFuture = copyCord(piece.cord());
+  int[][] pieceRightFuture = copyCord(piece.cord());
+  for(int j = 0; j < 4; j++) {
+    pieceLeftFuture[j][0]--;
+    pieceRightFuture[j][0]++;
   }
+  for (int i = 0; i < pieces.size()-1; i++) {
+    int[][] otherPiece = pieces.get(i).cord();
+    if (equals(pieceLeftFuture, otherPiece)) {
+      result[0] = "lnp";
+    }
+    if (equals(pieceRightFuture, otherPiece)) {
+      result[1] = "rnp";
+    }
+  }
+   return result;
+} 
+
+int[][] copyCord(int[][] main) {
+  int[][] copy1 = new int[main.length][main[0].length];
+  for(int i = 0; i < main.length; i++) {
+    for(int j = 0; j < main[0].length; j++) {
+      copy1[i][j] = main[i][j];
+    }
+  }
+  return copy1;
+}
   
 boolean equals(int[][] a, int[][] b) {
   boolean result = false;
