@@ -28,3 +28,5 @@ Angela (6-2): successfully bounded next rotations of pieces.
 Angela (6-3): while on zoom call with emma, we sucessfully created new spawn when a piece falls on the very bottom of the grid. However, we tried and failed to create a new spawn a piece falls on a neighbor piece. For the demo, we kept it at spawning when piece is at bottom
 
 Emma (6-3): went on call with Angela and worked on spawning a new piece once the current piece landed. Originally there was trouble about only being able to move the first piece that was spawned but managed to move that control to the current piece that last spawned. Transitioned pieces into an arraylist. However, while working have no yet been able to get pieces to stop moving at neighbors.
+
+Emma (6-4): worked on neighbor detection on the side
