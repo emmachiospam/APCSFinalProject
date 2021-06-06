@@ -33,4 +33,4 @@ Angela (6-4): neighbor detection works and pieces stop when there's a neighbor p
 
 Emma (6-4): worked on neighbor detection on the side
 
-
+Emma (6-5): worked on spacebar falling all the way down
