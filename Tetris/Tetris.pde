@@ -61,7 +61,7 @@ void keyPressed() {
     pieces.get(pieces.size()-1).String();
   }
   if (keyCode == ' ') {
-    while (piece.atBottom != true && touchNeighbor() == false) {
+    while (piece.atBottom == false && touchNeighbor() == false) {
       pieces.get(pieces.size()-1).completeFall();
     }
     //pieces.add(new P1());
