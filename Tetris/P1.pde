@@ -4,6 +4,7 @@ class P1 {
   int[][] cord; 
   boolean c1, c2;
   int inc = 1000;
+  int comInc = 1000;
   //int[][] r1 = new int[][]{{4,1}, {4,0}, {4,2}, {5,1}};
   int cx, cy;
   int[][] copy;
@@ -93,6 +94,13 @@ class P1 {
       move("DOWN");
     }
     inc--;
+  }
+  
+  void completeFall() {
+    if (comInc % 40 ==0) {
+      move("DOWN");
+    }
+    comInc--;
   }
 
   void move(String dir) {
