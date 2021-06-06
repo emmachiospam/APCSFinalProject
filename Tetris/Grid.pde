@@ -1,7 +1,8 @@
 class Grid {
   int[][] board;
   int side;
-
+  boolean preview = false;
+  
   Grid() {
     int[][] newBoard = new int[23][10];
     board = newBoard;
@@ -20,6 +21,8 @@ class Grid {
     strokeWeight(4);
     rect(300, 40, 300, 690);
   }
+  
+ 
 
 
 }

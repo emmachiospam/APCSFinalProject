@@ -10,6 +10,7 @@ class P1 {
   int index;
   boolean canMove = true;
   boolean atBottom = false;
+  
 
   public P1() {
     int rng = (int) (Math.random()*7);
@@ -86,6 +87,7 @@ class P1 {
       }
       rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
     }
+    
   }
 
   void fall() {

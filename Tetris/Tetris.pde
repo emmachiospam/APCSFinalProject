@@ -22,6 +22,7 @@ void draw() {
 
 }
 
+
 void newSpawn() {
   if (touchNeighbor()) {
     piece.atBottom = true;
