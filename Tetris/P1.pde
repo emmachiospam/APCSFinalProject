@@ -95,14 +95,14 @@ class P1 {
     if (inc % 40 ==0) {
       move("DOWN");
     }
-    inc--;
+    inc++;
   }
   
   void completeFall() {
     if (comInc % 40 ==0) {
       move("DOWN");
     }
-    comInc--;
+    comInc++;
   }
 
   void move(String dir) {
