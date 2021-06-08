@@ -12,8 +12,7 @@ class P1 {
   boolean canMove = true;
   boolean atBottom = false;
 
-  public P1() {
-    int rng = (int) (Math.random()*7);
+  public P1(int rng) {
     index = rng;
     //purple t-block
     if (rng == 0) {

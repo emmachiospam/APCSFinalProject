@@ -1,11 +1,14 @@
 Grid board;
 ArrayList<P1> pieces;
+ArrayList<Integer> future;
 P1 piece, nextPiece;
 int increment;
 void setup() {
   size(900, 800);
   pieces = new ArrayList<P1>();
-  piece = new P1();
+  future = new ArrayList<Integer>();
+  future.add((int) (Math.random()*7));
+  piece = new P1(future.get(0));
   pieces.add(piece);
   board = new Grid();
 }
@@ -30,7 +33,10 @@ void newSpawn() {
     pieces.get(pieces.size()-1).fall();
   }
   if (piece.atBottom) {
-    nextPiece = new P1();
+    nextPiece = new P1(future.remove(0));
+    for(int i = 0; i < 6; i++) {
+      future.add((int) (Math.random()*7));
+    }
     pieces.add(nextPiece);
     piece = nextPiece;
   }
@@ -39,32 +45,38 @@ void newSpawn() {
 void keyPressed() {
   if (keyCode == RIGHT && !touchNeighborsSides()[1].equals("rnp")) {
     pieces.get(pieces.size()-1).move("RIGHT");
-    pieces.get(pieces.size()-1).String();
+    //pieces.get(pieces.size()-1).String();
     piece.isBounded();
-    println();
+    //println();
   }
   if (keyCode == LEFT && !touchNeighborsSides()[0].equals("lnp")) {
     pieces.get(pieces.size()-1).move("LEFT");  
-    pieces.get(pieces.size()-1).String();
+    //pieces.get(pieces.size()-1).String();
     piece.isBounded();    
-    println();
+    //println();
   }
   if (keyCode == DOWN) {
     pieces.get(pieces.size()-1).move("DOWN");
-    pieces.get(pieces.size()-1).String();
+    //pieces.get(pieces.size()-1).String();
     piece.isBounded();    
-    println();
+    //println();
   }
   if (keyCode == UP) {
     pieces.get(pieces.size()-1).turn();
     pieces.get(pieces.size()-1).onBorder();
-    pieces.get(pieces.size()-1).String();
+    //pieces.get(pieces.size()-1).String();
   }
   if (keyCode == ' ') {
     while (piece.atBottom == false && touchNeighbor() == false) {
       pieces.get(pieces.size()-1).completeFall();
     }
     //pieces.add(new P1());
+  }
+  if (keyCode == 84) {
+    for(int i = 0; i < future.size(); i++) {
+      print(future.get(i) + " ");
+    }
+    println();
   }
 }
 boolean touchNeighbor() {
