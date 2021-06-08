@@ -43,10 +43,10 @@ class P1 {
     if (rng == 6) {
     cord = new int[][]{{5, 0}, {4, 0}, {5, 1}, {5, 2}};
     }
-    print(rng);
+    //print(rng);
   }
 
-  void display() {
+  void display(int x, int y) {
     for (int i = 0; i < 4; i++) {
       strokeWeight(2);
       //purple t-block
@@ -84,7 +84,8 @@ class P1 {
         stroke(214, 135, 15);
         fill(255, 161, 18, 150);
       }
-      rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
+      //rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
+      rect(cord[i][0]*30+x, cord[i][1]*30+y, 30, 30);
     }
   }
 
