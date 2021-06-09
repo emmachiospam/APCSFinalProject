@@ -20,6 +20,12 @@ class Grid {
     strokeWeight(4);
     rect(300, 40, 300, 690);
   }
-
-
+  
+  void addCord(int x, int y) {
+    board[x][y] = 1;
+  }
+  
+  int[][] board() {
+    return board;
+  }
 }

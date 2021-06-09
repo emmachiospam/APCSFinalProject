@@ -34,9 +34,25 @@ void newSpawn() {
     pieces.get(pieces.size()-1).fall();
   }
   if (piece.atBottom) {
+    int[][] cordNow = piece.cord();
+    for(int i = 0; i < cordNow.length; i++) {
+      int[] cord = cordNow[i];
+      board.addCord(cord[0], cord[1]);
+    }
+    for(int j = 0; j < board.board().length; j++) {
+      
+    }
     nextPiece = new P1(future.remove(0));
     pieces.add(nextPiece);
     piece = nextPiece;
+  }
+}
+
+void breakRow(int row) {
+  for(int i = 0; i < pieces.size(); i++) {
+    int[][] cord = pieces.get(i).cord();
+    int[] cordRow = cord[i];
+    
   }
 }
 
