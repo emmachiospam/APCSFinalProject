@@ -2,7 +2,6 @@ Grid board;
 ArrayList<P1> pieces;
 ArrayList<Integer> future;
 P1 piece, nextPiece;
-int increment;
 void setup() {
   size(900, 800);
   pieces = new ArrayList<P1>();
