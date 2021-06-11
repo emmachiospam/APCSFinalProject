@@ -98,4 +98,14 @@ class Grid {
       println();
     }
   }
+  
+  boolean breakRow(int x) {
+    boolean filled = true;
+    for(int i = 0; i < board[0].length; i++) {
+      if(board[x][i][0] == 0) {
+        filled = false;
+      }
+    }
+    return filled;
+  }
 }

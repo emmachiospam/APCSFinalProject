@@ -21,6 +21,7 @@ void draw() {
   //  p.display();
   //}
   newSpawn();
+  print(board.breakRow(23));
 
 
   //piece.touchNeighbor(pieces);
@@ -42,13 +43,6 @@ void newSpawn() {
     future.add(x);
     pieces.add(nextPiece);
     piece = nextPiece;
-  }
-}
-
-void breakRow(int row) {
-  for (int i = 0; i < pieces.size(); i++) {
-    int[][] cord = pieces.get(i).cord();
-    int[] cordRow = cord[i];
   }
 }
 
@@ -163,6 +157,6 @@ void fillGrid(int z) {
       board.fillBoard(x, y, piece.index());
     }
   }
-  board.boardString();
+  //board.boardString();
   println();
 }
