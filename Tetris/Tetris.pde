@@ -4,6 +4,7 @@ ArrayList<Integer> future;
 P1 piece, nextPiece;
 int points;
 boolean gamePlay = true;
+ArrayList<int[]> all = new ArrayList<int[]>();
 void setup() {
   board = new Grid();
   points = 0;
@@ -41,6 +42,9 @@ void draw() {
       P1 futurePiece = new P1(future.get(j));
       futurePiece.display(j);
     }
+    println("size"+ all.size());
+    
+    
   } else {
     if (!gamePlay) {
       clear();
@@ -56,6 +60,7 @@ void draw() {
 
 void newSpawn() {
   if (touchNeighbor()) {
+    allPoints();
     piece.atBottom = true;
   } else {
 
@@ -64,6 +69,7 @@ void newSpawn() {
     fillGrid(1);
   }
   if (piece.atBottom) {
+    allPoints();
     nextPiece = new P1(future.remove(0));
     int x = (int) (Math.random()*7) + 1;
     future.add(x);
@@ -119,32 +125,20 @@ void keyPressed() {
     println();
   }
   if (key == 'p') {
-  setup();
-  gamePlay = true;
-  println(gamePlay);
-}
+    setup();
+    gamePlay = true;
+    println(gamePlay);
+  }
 }
 boolean touchNeighbor() {
   boolean touch = false;
-  if (piece.getCord(0, 1) < 22 && piece.getCord(1, 1) < 22 && piece.getCord(2, 1) < 22 && piece.getCord(3, 1) < 22) {
-    int maxY = 0;
-    ArrayList<Integer> x = new ArrayList<Integer>();
+  for (int i = 0; i < pieces.size()-1; i++) {
     int[][] pieceFuture = piece.futureCord();
-    for (int i = 0; i < 4; i++) {
-      int y = pieceFuture[i][1];
-      if (y > maxY) {
-        maxY = y;
-        x.add(pieceFuture[i][0]);
-      }
-    }
-    for (int i = 0; i < x.size(); i++) {
-      if (board.getCord(maxY, x.get(i)) != 0) {
-        touch = true;
-      }
-    }
-  } 
-  return touch;
-}
+    int[][] otherPiece = toArray(all);
+    if (equals(pieceFuture, otherPiece)) touch = true;
+  }
+   return touch;
+  }
 
 String[] touchNeighborsSides() {
   String[] result = new String[2]; 
@@ -221,4 +215,25 @@ boolean gameOver() {
   }
   gamePlay = false;
   return overline;
+}
+
+void allPoints() {
+  for (int i = 0; i < 10; i++) {
+    for (int j =0;j < 23; j++) {
+      if (board.getCord(j, i) != 0) {
+        int[] pair = {i, j};
+        all.add(pair);
+      }
+    }
+  }
+  //if board is not 0, then add pair to empty arr
+}
+
+int[][] toArray(ArrayList<int[]> arr) {
+  int[][] result = new int[arr.size()][2];
+  for (int i = 0; i < arr.size(); i++) {
+      result[i][0]= arr.get(i)[0];
+      result[i][1]=arr.get(i)[1];
+  }
+  return result;
 }

@@ -15,7 +15,6 @@ class Grid {
   }
 
   void display() {
-    float increment = 30;
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 23; j++) {
         if (board[j][i][0] == 0) {
