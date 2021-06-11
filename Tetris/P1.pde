@@ -11,41 +11,40 @@ class P1 {
   int index;
   boolean canMove = true;
   boolean atBottom = false;
-  ArrayList<int[]> test;
+  Grid board = new Grid();
 
   public P1(int rng) {
     index = rng;
     //purple t-block
     if (rng == 0) {
-    cord = new int[][]{{4, 1}, {3, 1}, {5, 1}, {4, 0}};
+      cord = new int[][]{{4, 1}, {3, 1}, {5, 1}, {4, 0}};
     }
     //red z-block
     if (rng == 1) {
-    cord = new int[][]{{4, 1},{4, 0}, {3, 0}, {5, 1}};
+      cord = new int[][]{{4, 1}, {4, 0}, {3, 0}, {5, 1}};
     }
     //green s-block
     if (rng == 2) {
-    cord = new int[][]{ {4, 1},{5, 0}, {4, 0}, {3, 1}};
+      cord = new int[][]{ {4, 1}, {5, 0}, {4, 0}, {3, 1}};
     }
     //blue i-block
     if (rng == 3) {
-    cord = new int[][]{{4, 0}, {3, 0}, {5, 0}, {6, 0}};
+      cord = new int[][]{{4, 0}, {3, 0}, {5, 0}, {6, 0}};
     }
     //yellow o-block
     if (rng == 4) {
       canMove = false;
-    cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {5, 1}};
+      cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {5, 1}};
     }
     //blue j-block
     if (rng == 5) {
-    cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {4, 2}};
+      cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {4, 2}};
     }
     //orange l-block
     if (rng == 6) {
-    cord = new int[][]{{5, 0}, {4, 0}, {5, 1}, {5, 2}};
+      cord = new int[][]{{5, 0}, {4, 0}, {5, 1}, {5, 2}};
     }
-    //print(rng);
-  }
+  
 
   void display(int x, int y) {
     for (int i = 0; i < 4; i++) {
@@ -66,7 +65,7 @@ class P1 {
         fill(123, 255, 31, 150);
       }
       //blue i-block
-      if (index == 3){
+      if (index == 3) {
         stroke(41, 183, 224);
         fill(101, 201, 198, 150);
       }
@@ -94,14 +93,14 @@ class P1 {
     if (inc % 40 ==0) {
       move("DOWN");
     }
-    inc--;
+    inc++;
   }
-  
+
   void completeFall() {
     if (comInc % 40 ==0) {
       move("DOWN");
     }
-    comInc--;
+    comInc++;
   }
 
   void move(String dir) {
@@ -124,12 +123,10 @@ class P1 {
         for (int i = 0; i < 4; i ++) {
           cord[i][1]++;
         }
-      }
-      else {
+      } else {
         atBottom = true;
       }
     }
-    
   }
 
 
@@ -165,7 +162,7 @@ class P1 {
     }
     cord = copy2;
   }
-  
+
   int[][] test() {
     copy = cord.clone();
     int[][] copy2 = new int[4][2];
@@ -177,7 +174,7 @@ class P1 {
     }
     return copy2;
   }
-  
+
   String[] onBorder() {
     String[] result = new String[2];
     int[][] test = test();
@@ -202,21 +199,21 @@ class P1 {
     //print(result[0] + " "  + result[1]);
     return result;
   }
-  
+
   void turn() {
     if (canMove) {
-    if (!onBorder()[0].equals("rnp") && !onBorder()[0].equals("lnp")) {
-      if (!onBorder()[1].equals("dnp") && !onBorder()[1].equals("unp")) {
+      if (!onBorder()[0].equals("rnp") && !onBorder()[0].equals("lnp")) {
+        if (!onBorder()[1].equals("dnp") && !onBorder()[1].equals("unp")) {
           rotateCCW();
+        }
       }
     }
-    }
   }
-  
-   int[][] cord() {
+
+  int[][] cord() {
     return cord;
   }
-  
+
   int[][] futureCord() {
     int[][] copy = new int[4][2];
     for (int i = 0; i < 4; i++) {
@@ -224,13 +221,13 @@ class P1 {
         copy[i][j] = cord[i][j];
       }
     }
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
       copy[i][1]++;
     }
     return copy;
   }
-  
-    void String() {
+
+  void String() {
     for (int i = 0; i < cord.length; i++)
     {
       for (int j = 0; (cord[i] != null && j < cord[i].length); j++) {
@@ -240,5 +237,5 @@ class P1 {
     }
   }
 
-  
+
 }
