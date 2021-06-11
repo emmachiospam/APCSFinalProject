@@ -6,6 +6,8 @@ Group Members: Emma Chio, Angela Cai
 Brief Project Descripition:
 Tetris is a game that involves different blocks made up of four individuals tiles and filling the rows using these different blocks. Users can turn these tiles up, down, left, and right to better fit in the way they want.
 
+Running Instructions: Just normal compiling, no special libraries, etc.
+
 Google Docs Link:
 https://docs.google.com/document/d/1lMI12PImqNcg-z6ZqDGoK4aqGeMcMWb08jGhdtmxXLs/edit?usp=sharing
 
@@ -40,3 +42,5 @@ Emma (6-6): added comments to make the code easier to read
 Emma (6-7): got rid of an unnecessary file as well as showing future pieces.
 
 Emma (6-10): worked on turning the board into an array that would be able to display the pieces. Additionally, implemented the breaking of the row when it was filled
+
+Angela (6-10): to implement breaking of row, we had to change our approach a lot. However, this approach would involve changing how we implement neighbor detection and unfortunately our neighbor appraoch no longer works as intended.
