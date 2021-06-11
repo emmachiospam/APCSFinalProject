@@ -2,8 +2,10 @@ Grid board;
 ArrayList<P1> pieces;
 ArrayList<Integer> future;
 P1 piece, nextPiece;
+int points;
 void setup() {
   board = new Grid();
+  points = 0;
   size(900, 800);
   pieces = new ArrayList<P1>();
   future = new ArrayList<Integer>();
@@ -24,9 +26,15 @@ void draw() {
   //  p.display();
   //}
   newSpawn();
+  int count = 0;
   for(int i = 0; i < 23; i++) {
-    board.breakRow(i);
+    count = count + board.breakRow(i);
   }
+  points(count);
+  textSize(20);
+  fill(255, 255, 255);
+  text("points:", 150, 250); 
+  text(points, 150, 275); 
   for(int j = 0; j < 5; j++) {
     P1 futurePiece = new P1(future.get(j));
     futurePiece.display(j);
@@ -177,4 +185,19 @@ void fillGrid(int z) {
   }
   board.boardString();
   println();
+}
+
+void points(int count) {
+  if(count == 1) {
+    points = points + 40;
+  }
+  else if(count == 2) {
+    points = points + 100;
+  }
+  else if(count == 3) {
+    points = points + 300;
+  }
+  else if(count == 4) {
+    points = points + 1200;
+  }
 }
