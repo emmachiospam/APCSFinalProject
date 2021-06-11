@@ -241,6 +241,10 @@ class P1 {
       println();
     }
   }
+  
+  int getCord(int row, int col) {
+    return cord[row][col];
+  }
 
 
 }
