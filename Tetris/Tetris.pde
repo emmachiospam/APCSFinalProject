@@ -8,6 +8,7 @@ boolean started = false;
 ArrayList<int[]> all;
 void setup() {
   board = new Grid();
+
   points = 0;
   size(900, 800);
   pieces = new ArrayList<P1>();
@@ -21,8 +22,9 @@ void setup() {
     }
     future.add(rand);
   }
-  piece = new P1(future.get(0));
+      piece = new P1(future.get(0));
   pieces.add(piece);
+
 }
 
 void draw() {
@@ -86,9 +88,12 @@ void newSpawn() {
   }
   if (piece.atBottom) {
     allPoints();
-    nextPiece = new P1(future.remove(0));
+
     int x = (int) (Math.random()*7) + 1;
+    int y = (int) (Math.random()*7) + 1;
     future.add(x);
+    future.add(y);
+    nextPiece = new P1(future.remove(0));
     pieces.add(nextPiece);
     piece = nextPiece;
   }
@@ -230,7 +235,7 @@ void points(int count) {
 boolean gameOver() {
   boolean overline = false;
   for (int i = 0; i < 4; i++) {
-    if (piece.cord[i][1] ==2 && piece.isBounded()[1].equals("dnp")) overline = true;
+    if (piece.cord[i][1] ==1 && (touchNeighbor())) overline = true;
     //if (board.getCord(0, i) != 0) overline = true;
   }
   gamePlay = false;
