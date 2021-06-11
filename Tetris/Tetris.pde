@@ -5,13 +5,14 @@ P1 piece, nextPiece;
 int points;
 boolean gamePlay = true;
 boolean started = false;
-ArrayList<int[]> all = new ArrayList<int[]>();
+ArrayList<int[]> all;
 void setup() {
   board = new Grid();
   points = 0;
   size(900, 800);
   pieces = new ArrayList<P1>();
   future = new ArrayList<Integer>();
+  all = new ArrayList<int[]>();
     future.add((int) (Math.random()*7) + 1);
   for (int i = 1; i < 6; i++) {
     int rand = (int) (Math.random()*7) + 1;
@@ -42,9 +43,13 @@ void draw() {
     //}
     newSpawn();
     int count = 0;
-    for (int i = 0; i < 23; i++) {
-      count = count + board.breakRow(i);
+    for (int i = 0; i < 23; i++) { 
+      count = count + board.breakRow(i); 
     }
+    if (count != 0) { 
+    allPoints();
+  }
+    
     points(count);
     textSize(20);
     fill(255, 255, 255);
@@ -54,8 +59,7 @@ void draw() {
       P1 futurePiece = new P1(future.get(j));
       futurePiece.display(j);
     }
-    println("size"+ all.size());
-    
+    print(gameOver());
     
   } else {
     if (!gamePlay) {
@@ -233,14 +237,17 @@ boolean gameOver() {
 }
 
 void allPoints() {
+  ArrayList<int[]> all2 = new ArrayList<int[]>();
+  
   for (int i = 0; i < 10; i++) {
     for (int j =0;j < 23; j++) {
       if (board.getCord(j, i) != 0) {
         int[] pair = {i, j};
-        all.add(pair);
+        all2.add(pair);
       }
     }
   }
+  all = all2;
   //if board is not 0, then add pair to empty arr
 }
 

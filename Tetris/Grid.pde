@@ -3,6 +3,7 @@ class Grid {
   //hullo
   int side;
   boolean preview = false;
+  boolean broke = false;
 
   Grid() {
     int[][][] newBoard = new int[23][10][1];
@@ -106,9 +107,11 @@ class Grid {
     for (int k = 0; k < board[0].length; k++) {
       if (board[x][k][0] == 0) {
         filled = false;
+        broke = false;
       }
     }
     if (filled) {
+      broke = true;
       int[][][] newBoard = new int[23][10][1];
       for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 23; j++) {
