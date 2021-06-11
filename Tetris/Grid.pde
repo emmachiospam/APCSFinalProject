@@ -21,7 +21,7 @@ class Grid {
           stroke(200);
           strokeWeight(1);
           noFill();
-          square(300 + (i * increment), 700 - (j * increment), 30);
+          rect(i*30+300, j*30+40, 30, 30);
         }
         strokeWeight(2);
         //red z-block
@@ -84,7 +84,7 @@ class Grid {
 
   void boardString() {
     int[][] result = new int[23][10]; 
-      for (int i = 0; i < 23; i++) {
+    for (int i = 0; i < 23; i++) {
       for (int j = 0; j < 10; j++) {
         result[i][j] =getCord(i, j);
       }

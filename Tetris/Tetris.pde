@@ -32,9 +32,9 @@ void newSpawn() {
     piece.atBottom = true;
   } else {
     pieces.get(pieces.size()-1).fall();
+          fillGrid();
   }
   if (piece.atBottom) {
-    fillGrid();
     nextPiece = new P1(future.remove(0));
     int x = (int) (Math.random()*7) + 1;
     future.add(x);
