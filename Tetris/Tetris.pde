@@ -21,8 +21,6 @@ void draw() {
   //  p.display();
   //}
   newSpawn();
-
-
   //piece.touchNeighbor(pieces);
 }
 
@@ -31,7 +29,6 @@ void newSpawn() {
   if (touchNeighbor()) {
     piece.atBottom = true;
   } else {
-
     fillGrid(0);
     pieces.get(pieces.size()-1).fall();
     fillGrid(1);
@@ -45,12 +42,6 @@ void newSpawn() {
   }
 }
 
-void breakRow(int row) {
-  for (int i = 0; i < pieces.size(); i++) {
-    int[][] cord = pieces.get(i).cord();
-    int[] cordRow = cord[i];
-  }
-}
 
 void keyPressed() {
   if (keyCode == RIGHT && !touchNeighborsSides()[1].equals("rnp")) {
@@ -99,16 +90,41 @@ void keyPressed() {
     println();
   }
 }
+//boolean touchNeighbor() {
+//  boolean touch = false;
+//  for (int i = 0; i < pieces.size()-1; i++) {
+//    int[][] pieceFuture = piece.futureCord();
+//    int[][] otherPiece = pieces.get(i).cord();
+//    if (equals(pieceFuture, otherPiece)) {
+//      touch = true;
+//    }
+//  }
+//  return touch;
+//}
+
 boolean touchNeighbor() {
-  boolean touch = false;
-  for (int i = 0; i < pieces.size()-1; i++) {
+  if (piece.getCord(0, 1) < 22 && piece.getCord(1, 1) < 22 && piece.getCord(2, 1) < 22 && piece.getCord(3, 1) < 22) {
+    boolean touch = false;
+    //int maxY = -1000;
+    //int[][] pieceFuture = piece.futureCord();
+    //for (int i = 0; i < 4; i++) {
+    //  int y = pieceFuture[i][1];
+    //  if (y > maxY) maxY = y;
+    //}
+    ////if piece cfuture coordainte is on something that is not a zerro
+    //for (int i = 0; i < 4; i++) {
+    //  int x = piece.getCord(i,0);
+    //  if (board.getCord(maxY, x) != 0) touch = true;
+    //}
     int[][] pieceFuture = piece.futureCord();
-    int[][] otherPiece = pieces.get(i).cord();
-    if (equals(pieceFuture, otherPiece)) {
-      touch = true;
+    for (int i = 0; i < 4; i++) {
+      int x = pieceFuture[i][0];
+      int y = pieceFuture[i][1];
+      if (board.getCord(y, x) != 0) touch = true;
     }
+    return touch;
   }
-  return touch;
+  return false;
 }
 
 String[] touchNeighborsSides() {
@@ -165,4 +181,8 @@ void fillGrid(int z) {
   }
   board.boardString();
   println();
+}
+
+
+  
 }

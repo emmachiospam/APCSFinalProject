@@ -12,6 +12,7 @@ class P1 {
   boolean canMove = true;
   boolean atBottom = false;
   Grid board = new Grid();
+  boolean itself = true;
 
   public P1(int rng) {
     index = rng;
@@ -217,6 +218,10 @@ class P1 {
 
   int[][] cord() {
     return cord;
+  }
+  
+  int getCord(int x, int y) {
+    return cord[x][y];
   }
 
   int[][] futureCord() {
