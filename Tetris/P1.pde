@@ -46,7 +46,7 @@ class P1 {
     }
   
 
-  void display(int x, int y) {
+  void display() {
     for (int i = 0; i < 4; i++) {
       strokeWeight(2);
       //purple t-block
