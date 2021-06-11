@@ -17,9 +17,9 @@ void setup() {
 void draw() {
   background(0);
   board.display();
-  for (P1 p : pieces) {
-    p.display();
-  }
+  //for (P1 p : pieces) {
+  //  p.display();
+  //}
   newSpawn();
 
 
@@ -31,8 +31,10 @@ void newSpawn() {
   if (touchNeighbor()) {
     piece.atBottom = true;
   } else {
+
+    fillGrid(0);
     pieces.get(pieces.size()-1).fall();
-          fillGrid();
+    fillGrid(1);
   }
   if (piece.atBottom) {
     nextPiece = new P1(future.remove(0));
@@ -52,32 +54,42 @@ void breakRow(int row) {
 
 void keyPressed() {
   if (keyCode == RIGHT && !touchNeighborsSides()[1].equals("rnp")) {
+    fillGrid(0);
     pieces.get(pieces.size()-1).move("RIGHT");
+    fillGrid(1);
     //pieces.get(pieces.size()-1).String();
     piece.isBounded();
     //println();
   }
   if (keyCode == LEFT && !touchNeighborsSides()[0].equals("lnp")) {
-    pieces.get(pieces.size()-1).move("LEFT");  
+    fillGrid(0);
+    pieces.get(pieces.size()-1).move("LEFT");
+    fillGrid(1);
     //pieces.get(pieces.size()-1).String();
     piece.isBounded();    
     //println();
   }
   if (keyCode == DOWN) {
+    fillGrid(0);
     pieces.get(pieces.size()-1).move("DOWN");
+    fillGrid(1);
     //pieces.get(pieces.size()-1).String();
     piece.isBounded();    
     //println();
   }
   if (keyCode == UP) {
+    fillGrid(0);
     pieces.get(pieces.size()-1).turn();
+    fillGrid(1);
     pieces.get(pieces.size()-1).onBorder();
     //pieces.get(pieces.size()-1).String();
   }
   if (keyCode == ' ') {
+    fillGrid(0);
     while (piece.atBottom == false && touchNeighbor() == false) {
       pieces.get(pieces.size()-1).completeFall();
     }
+    fillGrid(1);
     //pieces.add(new P1());
   }
   if (keyCode == 84) {
@@ -141,11 +153,15 @@ boolean equals(int[][] a, int[][] b) {
   return result;
 }
 
-void fillGrid() {
+void fillGrid(int z) {
   for (int i = 0; i < piece.cord.length; i++) {
     int x = piece.cord[i][1];
     int y = piece.cord[i][0];
-    board.fillBoard(x, y, piece.index());
+    if (z == 0) {
+      board.fillBoard(x, y, 0);
+    } else {
+      board.fillBoard(x, y, piece.index());
+    }
   }
   board.boardString();
   println();
