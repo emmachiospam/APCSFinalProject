@@ -229,8 +229,9 @@ void points(int count) {
 
 boolean gameOver() {
   boolean overline = false;
-  for (int i = 0; i < 10; i++) {
-    if (board.getCord(0, i) != 0) overline = true;
+  for (int i = 0; i < 4; i++) {
+    if (piece.cord[i][1] ==2 && piece.isBounded()[1].equals("dnp")) overline = true;
+    //if (board.getCord(0, i) != 0) overline = true;
   }
   gamePlay = false;
   return overline;
