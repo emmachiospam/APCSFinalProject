@@ -1,5 +1,5 @@
 class P1 {
-
+  //eat food
   int dx, dy;
   int[][] cord; 
   boolean c1, c2;
