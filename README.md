@@ -43,4 +43,8 @@ Emma (6-7): got rid of an unnecessary file as well as showing future pieces.
 
 Emma (6-10): worked on turning the board into an array that would be able to display the pieces. Additionally, implemented the breaking of the row when it was filled
 
+<<<<<<< HEAD
 Angela (6-10): to implement breaking of row, we had to change our approach a lot. However, this approach would involve changing how we implement neighbor detection and unfortunately our neighbor appraoch no longer works as intended.
+=======
+Angela (6-10): worked on breaking rows of the pieces. However, to do this, we had to change how we implemented our other methods including neighbor detection where we had some trouble.
+>>>>>>> efaf3bdf930abaaef9a027f8ac6608175cf1d95c

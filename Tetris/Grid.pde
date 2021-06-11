@@ -102,7 +102,7 @@ class Grid {
     }
   }
 
-  void breakRow(int x) {
+  int breakRow(int x) {
     boolean filled = true;
     for (int k = 0; k < board[0].length; k++) {
       if (board[x][k][0] == 0) {
@@ -136,7 +136,11 @@ class Grid {
       //  }
       //}
       board = newBoard;
+      return 1;
     }
+    else {
+      return 0;
+    }  
   }
 
   int getValue(int x, int y) {

@@ -48,47 +48,47 @@ class P1 {
   }
   
 
-  void display() {
-    //for (int i = 0; i < 4; i++) {
-    //  strokeWeight(2);
-    //  //red z-block
-    //  if (index == 1) { 
-    //    stroke(162, 41, 45);
-    //    fill(167, 54, 58, 150);
-    //  }
-    //  //green s-block
-    //  if (index == 2) {
-    //    stroke(107, 203, 39);
-    //    fill(123, 255, 31, 150);
-    //  }
-    //  //blue i-block
-    //  if (index == 3) {
-    //    stroke(41, 183, 224);
-    //    fill(101, 201, 198, 150);
-    //  }
-    //  //yellow o-block
-    //  if (index == 4) {
-    //    stroke(224, 224, 27);
-    //    fill(249, 250, 15, 150);
-    //  }
-    //  //blue j-block
-    //  if (index == 5) {
-    //    stroke(33, 106, 219);
-    //    fill(35, 117, 245, 150);
-    //  }
-    //  //orange l-block
-    //  if (index == 6) {
-    //    stroke(214, 135, 15);
-    //    fill(255, 161, 18, 150);
-    //  }
-    //  //purple t-block
-    //  if (index == 7) {
-    //    stroke(155, 41, 227);
-    //    fill(162, 101, 201, 150);
-    //  }
-    //  //rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
-    //  rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
-    //}
+  void display(int y) {
+    for (int i = 0; i < 4; i++) {
+      strokeWeight(2);
+      //red z-block
+      if (index == 1) { 
+        stroke(162, 41, 45);
+        fill(167, 54, 58, 150);
+      }
+      //green s-block
+      if (index == 2) {
+        stroke(107, 203, 39);
+        fill(123, 255, 31, 150);
+      }
+      //blue i-block
+      if (index == 3) {
+        stroke(41, 183, 224);
+        fill(101, 201, 198, 150);
+      }
+      //yellow o-block
+      if (index == 4) {
+        stroke(224, 224, 27);
+        fill(249, 250, 15, 150);
+      }
+      //blue j-block
+      if (index == 5) {
+        stroke(33, 106, 219);
+        fill(35, 117, 245, 150);
+      }
+      //orange l-block
+      if (index == 6) {
+        stroke(214, 135, 15);
+        fill(255, 161, 18, 150);
+      }
+      //purple t-block
+      if (index == 7) {
+        stroke(155, 41, 227);
+        fill(162, 101, 201, 150);
+      }
+      //rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
+      rect((cord[i][0] + 10)*30+300, (cord[i][1] + y * 4)*30+100, 30, 30);
+    }
   }
   
   int index() {
