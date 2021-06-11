@@ -17,6 +17,9 @@ void setup() {
 void draw() {
   background(0);
   board.display();
+  textSize(20);
+  fill(255, 255, 255);
+  text("future pieces", 680, 80); 
   //for (P1 p : pieces) {
   //  p.display();
   //}
@@ -24,7 +27,10 @@ void draw() {
   for(int i = 0; i < 23; i++) {
     board.breakRow(i);
   }
-
+  for(int j = 0; j < 5; j++) {
+    P1 futurePiece = new P1(future.get(j));
+    futurePiece.display(j);
+  }
 
   //piece.touchNeighbor(pieces);
 }
