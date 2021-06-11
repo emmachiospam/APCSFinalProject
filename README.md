@@ -8,6 +8,11 @@ Tetris is a game that involves different blocks made up of four individuals tile
 
 Running Instructions: Just normal compiling, no special libraries, etc.
 
+Keys:
+- right, left, down works as intended to move piece
+- spacebar is a hard down for the piece
+- p is for restarting the game
+
 Google Docs Link:
 https://docs.google.com/document/d/1lMI12PImqNcg-z6ZqDGoK4aqGeMcMWb08jGhdtmxXLs/edit?usp=sharing
 
