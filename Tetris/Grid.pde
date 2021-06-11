@@ -1,5 +1,6 @@
 class Grid {
   int[][][] board;
+  //hullo
   int side;
   boolean preview = false;
 
@@ -70,6 +71,8 @@ class Grid {
         //rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
       }
     }
+    noFill();
+    stroke(200);
     strokeWeight(4);
     rect(300, 40, 300, 690);
   }
@@ -97,5 +100,46 @@ class Grid {
       }
       println();
     }
+  }
+
+  void breakRow(int x) {
+    boolean filled = true;
+    for (int k = 0; k < board[0].length; k++) {
+      if (board[x][k][0] == 0) {
+        filled = false;
+      }
+    }
+    if (filled) {
+      int[][][] newBoard = new int[23][10][1];
+      for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 23; j++) {
+          if(j > x) {
+            newBoard[j][i][0] = getValue(j,i);
+          }
+          else if(j == 0) {
+            newBoard[j][i][0] = 0;
+          }
+          else {
+            newBoard[j][i][0] = getValue(j-1,i);
+          }
+          //newBoard[j][i][0] = 0;
+        }
+      }
+      //for (int n = 22; n > x; x--) {
+      //  for (int m = 0; m < board[0].length; m++) {
+      //    newBoard[n][m][0] = getValue(n, m);
+      //  }
+      //}
+      //for (int i = x - 1; i >= 0; i--) {
+      //  for (int j = 0; j < board[0].length; j++) {
+      //    newBoard[i+1][j][0] = getValue(i, j);
+      //  }
+      //}
+      board = newBoard;
+    }
+  }
+
+  int getValue(int x, int y) {
+    return board[x][y][0];
   }
 }

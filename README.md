@@ -34,3 +34,9 @@ Angela (6-4): neighbor detection works and pieces stop when there's a neighbor p
 Emma (6-4): worked on neighbor detection on the side
 
 Emma (6-5): worked on spacebar falling all the way down
+
+Emma (6-6): added comments to make the code easier to read
+
+Emma (6-7): got rid of an unnecessary file as well as showing future pieces.
+
+Emma (6-10): worked on turning the board into an array that would be able to display the pieces. Additionally, implemented the breaking of the row when it was filled

@@ -1,3 +1,4 @@
+
 class P1 {
   //eat food
   int dx, dy;
@@ -12,7 +13,6 @@ class P1 {
   boolean canMove = true;
   boolean atBottom = false;
   Grid board = new Grid();
-  boolean itself = true;
 
   public P1(int rng) {
     index = rng;
@@ -219,10 +219,6 @@ class P1 {
   int[][] cord() {
     return cord;
   }
-  
-  int getCord(int x, int y) {
-    return cord[x][y];
-  }
 
   int[][] futureCord() {
     int[][] copy = new int[4][2];
@@ -245,6 +241,10 @@ class P1 {
       }
       println();
     }
+  }
+  
+  int getCord(int row, int col) {
+    return cord[row][col];
   }
 
 

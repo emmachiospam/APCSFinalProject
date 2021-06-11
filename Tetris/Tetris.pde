@@ -15,12 +15,15 @@ void setup() {
 }
 
 void draw() {
-  background(0);
-  board.display();
-  //for (P1 p : pieces) {
-  //  p.display();
-  //}
-  newSpawn();
+    background(0);
+    board.display();
+    //for (P1 p : pieces) {
+    //  p.display();
+    //}
+    newSpawn();
+    for (int i = 0; i < 23; i++) {
+      board.breakRow(i);
+  }
   //piece.touchNeighbor(pieces);
 }
 
@@ -29,6 +32,7 @@ void newSpawn() {
   if (touchNeighbor()) {
     piece.atBottom = true;
   } else {
+
     fillGrid(0);
     pieces.get(pieces.size()-1).fall();
     fillGrid(1);
@@ -41,7 +45,6 @@ void newSpawn() {
     piece = nextPiece;
   }
 }
-
 
 void keyPressed() {
   if (keyCode == RIGHT && !touchNeighborsSides()[1].equals("rnp")) {
@@ -90,41 +93,26 @@ void keyPressed() {
     println();
   }
 }
-//boolean touchNeighbor() {
-//  boolean touch = false;
-//  for (int i = 0; i < pieces.size()-1; i++) {
-//    int[][] pieceFuture = piece.futureCord();
-//    int[][] otherPiece = pieces.get(i).cord();
-//    if (equals(pieceFuture, otherPiece)) {
-//      touch = true;
-//    }
-//  }
-//  return touch;
-//}
-
 boolean touchNeighbor() {
+  boolean touch = false;
   if (piece.getCord(0, 1) < 22 && piece.getCord(1, 1) < 22 && piece.getCord(2, 1) < 22 && piece.getCord(3, 1) < 22) {
-    boolean touch = false;
-    //int maxY = -1000;
-    //int[][] pieceFuture = piece.futureCord();
-    //for (int i = 0; i < 4; i++) {
-    //  int y = pieceFuture[i][1];
-    //  if (y > maxY) maxY = y;
-    //}
-    ////if piece cfuture coordainte is on something that is not a zerro
-    //for (int i = 0; i < 4; i++) {
-    //  int x = piece.getCord(i,0);
-    //  if (board.getCord(maxY, x) != 0) touch = true;
-    //}
+    int maxY = 0;
+    ArrayList<Integer> x = new ArrayList<Integer>();
     int[][] pieceFuture = piece.futureCord();
     for (int i = 0; i < 4; i++) {
-      int x = pieceFuture[i][0];
       int y = pieceFuture[i][1];
-      if (board.getCord(y, x) != 0) touch = true;
+      if (y > maxY) {
+        maxY = y;
+        x.add(pieceFuture[i][0]);
+      }
     }
-    return touch;
-  }
-  return false;
+    for (int i = 0; i < x.size(); i++) {
+      if (board.getCord(maxY, x.get(i)) != 0) {
+        touch = true;
+      }
+    }
+  } 
+  return touch;
 }
 
 String[] touchNeighborsSides() {
@@ -182,6 +170,3 @@ void fillGrid(int z) {
   board.boardString();
   println();
 }
-
-
-  
