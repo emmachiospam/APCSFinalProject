@@ -1,23 +1,27 @@
 Grid board;
 ArrayList<P1> pieces;
+ArrayList<Integer> future;
 P1 piece, nextPiece;
-int increment;
 void setup() {
+  board = new Grid();
   size(900, 800);
   pieces = new ArrayList<P1>();
-  piece = new P1();
+  future = new ArrayList<Integer>();
+  for (int i = 0; i < 6; i++) {
+    future.add((int) (Math.random()*7));
+  }
+  piece = new P1(future.get(0));
   pieces.add(piece);
-  board = new Grid();
 }
 
 void draw() {
   background(0);
   board.display();
   for (P1 p : pieces) {
-    p.display();
+    p.display(300, 40);
   }
   newSpawn();
-  
+
 
   //piece.touchNeighbor(pieces);
 }
@@ -30,42 +34,55 @@ void newSpawn() {
     pieces.get(pieces.size()-1).fall();
   }
   if (piece.atBottom) {
-        fillGrid();
+    fillGrid();
     nextPiece = new P1();
     pieces.add(nextPiece);
     piece = nextPiece;
   }
 }
 
+void breakRow(int row) {
+  for (int i = 0; i < pieces.size(); i++) {
+    int[][] cord = pieces.get(i).cord();
+    int[] cordRow = cord[i];
+  }
+}
+
 void keyPressed() {
   if (keyCode == RIGHT && !touchNeighborsSides()[1].equals("rnp")) {
     pieces.get(pieces.size()-1).move("RIGHT");
-    pieces.get(pieces.size()-1).String();
+    //pieces.get(pieces.size()-1).String();
     piece.isBounded();
-    println();
+    //println();
   }
   if (keyCode == LEFT && !touchNeighborsSides()[0].equals("lnp")) {
     pieces.get(pieces.size()-1).move("LEFT");  
-    pieces.get(pieces.size()-1).String();
+    //pieces.get(pieces.size()-1).String();
     piece.isBounded();    
-    println();
+    //println();
   }
   if (keyCode == DOWN) {
     pieces.get(pieces.size()-1).move("DOWN");
-    pieces.get(pieces.size()-1).String();
+    //pieces.get(pieces.size()-1).String();
     piece.isBounded();    
-    println();
+    //println();
   }
   if (keyCode == UP) {
     pieces.get(pieces.size()-1).turn();
     pieces.get(pieces.size()-1).onBorder();
-    pieces.get(pieces.size()-1).String();
+    //pieces.get(pieces.size()-1).String();
   }
   if (keyCode == ' ') {
     while (piece.atBottom == false && touchNeighbor() == false) {
       pieces.get(pieces.size()-1).completeFall();
     }
     //pieces.add(new P1());
+  }
+  if (keyCode == 84) {
+    for (int i = 0; i < future.size(); i++) {
+      print(future.get(i) + " ");
+    }
+    println();
   }
 }
 boolean touchNeighbor() {

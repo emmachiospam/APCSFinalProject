@@ -13,8 +13,7 @@ class P1 {
   boolean atBottom = false;
   Grid board = new Grid();
 
-  public P1() {
-    int rng = (int) (Math.random()*7);
+  public P1(int rng) {
     index = rng;
     //purple t-block
     if (rng == 0) {
@@ -45,7 +44,7 @@ class P1 {
     if (rng == 6) {
       cord = new int[][]{{5, 0}, {4, 0}, {5, 1}, {5, 2}};
     }
-  }
+  
 
   void display() {
     for (int i = 0; i < 4; i++) {
@@ -85,7 +84,8 @@ class P1 {
         stroke(214, 135, 15);
         fill(255, 161, 18, 150);
       }
-      rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
+      //rect(cord[i][0]*30+300, cord[i][1]*30+40, 30, 30);
+      rect(cord[i][0]*30+x, cord[i][1]*30+y, 30, 30);
     }
   }
 

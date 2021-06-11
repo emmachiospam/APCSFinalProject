@@ -51,10 +51,4 @@ class Grid {
       println();
     }
   }
-  
- 
-  
- 
-
-
 }
