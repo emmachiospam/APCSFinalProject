@@ -18,32 +18,32 @@ class P1 {
     index = rng;
     //red z-block
     if (rng == 1) {
-      cord = new int[][]{{4, 1}, {4, 0}, {3, 0}, {5, 1}};
+      cord = new int[][]{{4, 2}, {4, 1}, {3, 1}, {5, 2}};
     }
     //green s-block
     if (rng == 2) {
-      cord = new int[][]{ {4, 1}, {5, 0}, {4, 0}, {3, 1}};
+      cord = new int[][]{ {4, 2}, {5, 1}, {4, 1}, {3, 2}};
     }
     //blue i-block
     if (rng == 3) {
-      cord = new int[][]{{4, 0}, {3, 0}, {5, 0}, {6, 0}};
+      cord = new int[][]{{4, 1}, {3, 1}, {5, 1}, {6, 1}};
     }
     //yellow o-block
     if (rng == 4) {
       canMove = false;
-      cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {5, 1}};
+      cord = new int[][]{{4, 1}, {5, 1}, {4, 2}, {5, 2}};
     }
     //blue j-block
     if (rng == 5) {
-      cord = new int[][]{{4, 0}, {5, 0}, {4, 1}, {4, 2}};
+      cord = new int[][]{{4, 1}, {5, 1}, {4, 2}, {4, 3}};
     }
     //orange l-block
     if (rng == 6) {
-      cord = new int[][]{{5, 0}, {4, 0}, {5, 1}, {5, 2}};
+      cord = new int[][]{{5, 1}, {4, 1}, {5, 2}, {5, 3}};
     }
     //purple t-block
     if (rng == 7) {
-      cord = new int[][]{{4, 1}, {3, 1}, {5, 1}, {4, 0}};
+      cord = new int[][]{{4, 2}, {3, 2}, {5, 2}, {4, 1}};
     }
   }
   
