@@ -18,19 +18,19 @@ void draw() {
   }
   newSpawn();
   
-  //piece.touchNeighbor(pieces);
 
+  //piece.touchNeighbor(pieces);
 }
 
 
 void newSpawn() {
   if (touchNeighbor()) {
     piece.atBottom = true;
-  }
-  else {
+  } else {
     pieces.get(pieces.size()-1).fall();
   }
   if (piece.atBottom) {
+        fillGrid();
     nextPiece = new P1();
     pieces.add(nextPiece);
     piece = nextPiece;
@@ -74,10 +74,10 @@ boolean touchNeighbor() {
     int[][] pieceFuture = piece.futureCord();
     int[][] otherPiece = pieces.get(i).cord();
     if (equals(pieceFuture, otherPiece)) {
-      touch = true; 
+      touch = true;
     }
   }
-   return touch;
+  return touch;
 }
 
 String[] touchNeighborsSides() {
@@ -86,7 +86,7 @@ String[] touchNeighborsSides() {
   result[1] = "";
   int[][] pieceLeftFuture = copyCord(piece.cord());
   int[][] pieceRightFuture = copyCord(piece.cord());
-  for(int j = 0; j < 4; j++) {
+  for (int j = 0; j < 4; j++) {
     pieceLeftFuture[j][0]--;
     pieceRightFuture[j][0]++;
   }
@@ -99,25 +99,35 @@ String[] touchNeighborsSides() {
       result[1] = "rnp";
     }
   }
-   return result;
+  return result;
 } 
 
 int[][] copyCord(int[][] main) {
   int[][] copy1 = new int[main.length][main[0].length];
-  for(int i = 0; i < main.length; i++) {
-    for(int j = 0; j < main[0].length; j++) {
+  for (int i = 0; i < main.length; i++) {
+    for (int j = 0; j < main[0].length; j++) {
       copy1[i][j] = main[i][j];
     }
   }
   return copy1;
 }
-  
+
 boolean equals(int[][] a, int[][] b) {
   boolean result = false;
-  for (int[] row1: a) {
-    for (int[] row2: b) {
+  for (int[] row1 : a) {
+    for (int[] row2 : b) {
       if ((row1[0] == row2[0]) && (row1[1] == row2[1])) result = true;
     }
   }
   return result;
+}
+
+void fillGrid() {
+  for (int i = 0; i < piece.cord.length; i++) {
+    int x = piece.cord[i][1];
+    int y = piece.cord[i][0];
+    board.fill(x, y);
+  }
+  board.boardString();
+  println();
 }
