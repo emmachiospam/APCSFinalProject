@@ -3,9 +3,8 @@ ArrayList<P1> pieces;
 ArrayList<Integer> future;
 P1 piece, nextPiece;
 int points;
-boolean gamePlay = true;
 boolean started = false;
-ArrayList<int[]> all = new ArrayList<int[]>();
+boolean gamePlay = true;
 void setup() {
   board = new Grid();
   points = 0;
@@ -27,9 +26,10 @@ void setup() {
 void draw() {
   if(!started) {
     background(0);
-    textSize(32);
+    textSize(50);
+    //text("Tetris", 400, 400); 
+    text("Hit Enter to Start", 250, 400); 
     fill(255, 255, 255);
-    text("hit enter to start", 350, 250); 
   }
   else if (!gameOver() || gamePlay) {
     background(0);
@@ -54,9 +54,6 @@ void draw() {
       P1 futurePiece = new P1(future.get(j));
       futurePiece.display(j);
     }
-    println("size"+ all.size());
-    
-    
   } else {
     if (!gamePlay) {
       clear();
@@ -72,7 +69,6 @@ void draw() {
 
 void newSpawn() {
   if (touchNeighbor()) {
-    allPoints();
     piece.atBottom = true;
   } else {
 
@@ -81,7 +77,6 @@ void newSpawn() {
     fillGrid(1);
   }
   if (piece.atBottom) {
-    allPoints();
     nextPiece = new P1(future.remove(0));
     int x = (int) (Math.random()*7) + 1;
     future.add(x);
@@ -147,13 +142,30 @@ void keyPressed() {
 }
 boolean touchNeighbor() {
   boolean touch = false;
-  for (int i = 0; i < pieces.size()-1; i++) {
+  if (piece.getCord(0, 1) < 22 && piece.getCord(1, 1) < 22 && piece.getCord(2, 1) < 22 && piece.getCord(3, 1) < 22) {
+    int maxY = 0;
+    ArrayList<Integer> x = new ArrayList<Integer>();
     int[][] pieceFuture = piece.futureCord();
-    int[][] otherPiece = toArray(all);
-    if (equals(pieceFuture, otherPiece)) touch = true;
-  }
-   return touch;
-  }
+    for (int i = 0; i < 4; i++) {
+      int y = pieceFuture[i][1];
+      if (y > maxY) {
+        maxY = y;
+      }
+    }
+    for (int i = 0; i < 4; i++) {
+      int y = pieceFuture[i][1];
+      if (y == maxY) {
+        x.add(pieceFuture[i][0]);
+      }
+    }
+    for (int i = 0; i < x.size(); i++) {
+      if (board.getCord(maxY, x.get(i)) != 0) {
+        touch = true;
+      }
+    }
+  } 
+  return touch;
+}
 
 String[] touchNeighborsSides() {
   String[] result = new String[2]; 
@@ -207,7 +219,7 @@ void fillGrid(int z) {
       board.fillBoard(x, y, piece.index());
     }
   }
-  board.boardString();
+  //board.boardString();
   println();
 }
 
@@ -230,25 +242,4 @@ boolean gameOver() {
   }
   gamePlay = false;
   return overline;
-}
-
-void allPoints() {
-  for (int i = 0; i < 10; i++) {
-    for (int j =0;j < 23; j++) {
-      if (board.getCord(j, i) != 0) {
-        int[] pair = {i, j};
-        all.add(pair);
-      }
-    }
-  }
-  //if board is not 0, then add pair to empty arr
-}
-
-int[][] toArray(ArrayList<int[]> arr) {
-  int[][] result = new int[arr.size()][2];
-  for (int i = 0; i < arr.size(); i++) {
-      result[i][0]= arr.get(i)[0];
-      result[i][1]=arr.get(i)[1];
-  }
-  return result;
 }
