@@ -8,7 +8,7 @@ void setup() {
   pieces = new ArrayList<P1>();
   future = new ArrayList<Integer>();
   for (int i = 0; i < 6; i++) {
-    future.add((int) (Math.random()*7));
+    future.add((int) (Math.random()*7) + 1);
   }
   piece = new P1(future.get(0));
   pieces.add(piece);
@@ -18,7 +18,7 @@ void draw() {
   background(0);
   board.display();
   for (P1 p : pieces) {
-    p.display(300, 40);
+    p.display();
   }
   newSpawn();
 
@@ -35,7 +35,9 @@ void newSpawn() {
   }
   if (piece.atBottom) {
     fillGrid();
-    nextPiece = new P1();
+    nextPiece = new P1(future.remove(0));
+    int x = (int) (Math.random()*7) + 1;
+    future.add(x);
     pieces.add(nextPiece);
     piece = nextPiece;
   }
@@ -143,7 +145,7 @@ void fillGrid() {
   for (int i = 0; i < piece.cord.length; i++) {
     int x = piece.cord[i][1];
     int y = piece.cord[i][0];
-    board.fill(x, y);
+    board.fillBoard(x, y, piece.index());
   }
   board.boardString();
   println();
