@@ -32,7 +32,7 @@ void draw() {
     background(0);
     textSize(32);
     fill(255, 255, 255);
-    text("hit enter to start", 350, 250); 
+    text("hit enter to start :)", 300, 300); 
   }
   else if (!gameOver() || gamePlay) {
     background(0);
