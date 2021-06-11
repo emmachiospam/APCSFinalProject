@@ -11,6 +11,7 @@ class P1 {
   int index;
   boolean canMove = true;
   boolean atBottom = false;
+  ArrayList<int[]> test;
 
   public P1(int rng) {
     index = rng;

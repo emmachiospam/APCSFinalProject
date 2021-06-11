@@ -3,6 +3,7 @@ ArrayList<P1> pieces;
 ArrayList<Integer> future;
 P1 piece, nextPiece;
 void setup() {
+  board = new Grid();
   size(900, 800);
   pieces = new ArrayList<P1>();
   future = new ArrayList<Integer>();
@@ -11,7 +12,6 @@ void setup() {
   }
   piece = new P1(future.get(0));
   pieces.add(piece);
-  board = new Grid();
 }
 
 void draw() {
