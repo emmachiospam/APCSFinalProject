@@ -44,3 +44,7 @@ Emma (6-7): got rid of an unnecessary file as well as showing future pieces.
 Emma (6-10): worked on turning the board into an array that would be able to display the pieces. Additionally, implemented the breaking of the row when it was filled
 
 Angela (6-10): worked on breaking rows of the pieces. However, to do this, we had to change how we implemented our other methods including neighbor detection where we had some trouble but eventually fixed.
+
+Angela (6-11): created gameOver where p is for restart and enter is for begin. 
+
+Emma (6-11): worked on point system, displayed next pieces, and fixed some null point errors.
