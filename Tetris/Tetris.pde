@@ -3,6 +3,7 @@ ArrayList<P1> pieces;
 ArrayList<Integer> future;
 P1 piece, nextPiece;
 int points;
+boolean gamePlay = true;
 void setup() {
   board = new Grid();
   points = 0;
@@ -17,27 +18,36 @@ void setup() {
 }
 
 void draw() {
-  background(0);
-  board.display();
-  textSize(20);
-  fill(255, 255, 255);
-  text("future pieces", 680, 80); 
-  //for (P1 p : pieces) {
-  //  p.display();
-  //}
-  newSpawn();
-  int count = 0;
-  for(int i = 0; i < 23; i++) {
-    count = count + board.breakRow(i);
-  }
-  points(count);
-  textSize(20);
-  fill(255, 255, 255);
-  text("points:", 150, 250); 
-  text(points, 150, 275); 
-  for(int j = 0; j < 5; j++) {
-    P1 futurePiece = new P1(future.get(j));
-    futurePiece.display(j);
+  if (!gameOver() || gamePlay) {
+    background(0);
+    board.display();
+    textSize(20);
+    fill(255, 255, 255);
+    text("future pieces", 680, 80); 
+    //for (P1 p : pieces) {
+    //  p.display();
+    //}
+    newSpawn();
+    int count = 0;
+    for (int i = 0; i < 23; i++) {
+      count = count + board.breakRow(i);
+    }
+    points(count);
+    textSize(20);
+    fill(255, 255, 255);
+    text("points:", 150, 250); 
+    text(points, 150, 275); 
+    for (int j = 0; j < 5; j++) {
+      P1 futurePiece = new P1(future.get(j));
+      futurePiece.display(j);
+    }
+  } else {
+    if (!gamePlay) {
+      clear();
+    }
+    textSize(50);
+    text("PLAY AGAIN? Press P", 250, 400); 
+    fill(255, 255, 255);
   }
 
   //piece.touchNeighbor(pieces);
@@ -108,6 +118,11 @@ void keyPressed() {
     }
     println();
   }
+  if (key == 'p') {
+  setup();
+  gamePlay = true;
+  println(gamePlay);
+}
 }
 boolean touchNeighbor() {
   boolean touch = false;
@@ -122,7 +137,7 @@ boolean touchNeighbor() {
         x.add(pieceFuture[i][0]);
       }
     }
-    for(int i = 0; i < x.size(); i++) {
+    for (int i = 0; i < x.size(); i++) {
       if (board.getCord(maxY, x.get(i)) != 0) {
         touch = true;
       }
@@ -188,16 +203,13 @@ void fillGrid(int z) {
 }
 
 void points(int count) {
-  if(count == 1) {
+  if (count == 1) {
     points = points + 40;
-  }
-  else if(count == 2) {
+  } else if (count == 2) {
     points = points + 100;
-  }
-  else if(count == 3) {
+  } else if (count == 3) {
     points = points + 300;
-  }
-  else if(count == 4) {
+  } else if (count == 4) {
     points = points + 1200;
   }
 }
@@ -205,7 +217,8 @@ void points(int count) {
 boolean gameOver() {
   boolean overline = false;
   for (int i = 0; i < 10; i++) {
-        if (board.getCord(0, i) != 0) overline = true; 
+    if (board.getCord(0, i) != 0) overline = true;
   }
-  return overlinie;
+  gamePlay = false;
+  return overline;
 }
