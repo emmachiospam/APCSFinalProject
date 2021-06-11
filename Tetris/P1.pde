@@ -43,7 +43,7 @@ class P1 {
       cord = new int[][]{{5, 1}, {4, 1}, {5, 2}, {5, 3}};
     }
     //purple t-block
-    if (rng == 7) {
+    if (rng == 7 || rng == 8) {
       cord = new int[][]{{4, 2}, {3, 2}, {5, 2}, {4, 1}};
     }
   }
@@ -83,7 +83,7 @@ class P1 {
         fill(255, 161, 18, 150);
       }
       //purple t-block
-      if (index == 7) {
+      if (index == 7 || index == 8) {
         stroke(155, 41, 227);
         fill(162, 101, 201, 150);
       }
