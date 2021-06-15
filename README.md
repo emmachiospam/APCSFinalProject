@@ -10,6 +10,7 @@ Running Instructions: Just normal compiling, no special libraries, etc.
 
 Keys:
 - right, left, down works as intended to move piece
+- up is for rotate CCW
 - spacebar is a hard down for the piece
 - p is for restarting the game
 
@@ -26,7 +27,7 @@ Emma (5-27): made sure the pieces could only move within the grid
 
 Angela (5-27): falling motion of the pieces work. can control pace of motion
 
-Angela (5-28): started transitioning the six smaller classes into a single big one. Also was able to create a rotate method that had a designated rotation point for CCW or CW pieces. For the convenience and design, we chose to stick with CW though we can add an extra CCW option too.
+Angela (5-28): started transitioning the six smaller classes into a single big one. Also was able to create a rotate method that had a designated rotation point for CCW or CW pieces. For the convenience and design, we chose to stick with CCW though we can add an extra CW option too.
 
 Emma (5-29): worked on coloring each block and making sure that the pieces rotate within the grid
 
